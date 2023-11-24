@@ -1,0 +1,273 @@
+/* =======================> ARAHIN CSS DI DALAM FOLDER ADMIN KESINI YAK <======================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: row;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 250px 1fr; 
+    grid-gap: 20px; 
+}
+
+body h1, h2{
+    color: orange;
+}
+
+/* ==============================================> SIDEBAR <============================================== */
+
+.sidebar{
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 250px;
+    background-color: #2691d9;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; 
+}
+.sidebar-name {
+    height: 100px;
+    align-items: center;
+    display: flex;
+}
+.sidebar-name h2 {
+    color: white;
+    text-align: center;
+    margin: auto;
+}
+.navbar-menu{
+    list-style: none;
+    padding: 5px;
+}
+.nav-item {
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 10px;
+    height: 30px;
+    cursor: pointer;
+    background-color: #4aa9e9;
+    border-radius: 5px;
+    padding: 0 16px; 
+}
+.nav-item a {
+    color: white;
+    text-decoration: none;
+    width: 100%; 
+    text-align: center; 
+}
+.user-info {
+    position: absolute;
+    width: 250px;
+    bottom: 0;
+    height: 100px;
+
+}
+.container-user {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.akun-name {
+    font-size: 20px;
+    text-align: center;
+    color: white;
+}
+
+.container-user button {
+    width: 80px;
+    height: 30px;
+    margin: 10px auto;
+    background-color: red;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.content{
+    /* margin-left: 250px;  */
+    padding: 20px; 
+
+}
+
+/* ==============================================> USER <============================================== */
+
+table {
+    width: 100%; 
+    table-layout: fixed; 
+    border-collapse: collapse; 
+}
+.top-user-table {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.tambah-user-btn a{
+    text-decoration: none;
+    color: white;
+}
+.tambah-user-btn{
+    background-color: #2691d9;
+    height: 30px;
+    width: 70px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+}
+
+.user-search input{
+    height: 30px;
+    width: 300px;
+    border-radius: 10px;
+    padding-left: 10px;
+    border: 1px;
+    background-color: #d3d3d3;
+}
+
+.user-search button {
+    height: 30px;
+    width: 50px;
+    border-radius: 10px;
+    background-color: #2691d9;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.user-table-header {
+    background-color: #4aa9e9;
+    border-radius: 15px 15px 0 0;
+    color: #fff;
+}
+
+.user-table-header td{
+    text-align: center;
+    font-weight: 300;
+}
+th, td {
+    padding: 8px; 
+}
+.user-table-header td:nth-child(1) {
+    width: 40px;
+    text-align: center;
+}
+.user-table-header td:nth-child(2) {
+    width: 220px;
+}
+.user-table-header td:nth-child(3) {
+    width: 120px;
+}
+.user-table-header td:nth-child(4) {
+    width: 120px;
+}
+.user-table-header td:nth-child(5) {
+    width: 150px;
+}
+.user-table-header td:nth-child(6) {
+    width: 100px;
+}
+.user-table-header td:nth-child(7) {
+    width: 50px;
+    justify-content: center;
+}
+.user-table-header td:nth-child(8) {
+    width: 50px;
+}
+.user-table td:nth-child(1) {
+    width: 40px;
+    text-align: center;
+}
+.user-table td:nth-child(2) {
+    width: 220px;
+}
+.user-table td:nth-child(3) {
+    width: 120px;
+}
+.user-table td:nth-child(4) {
+    width: 120px;
+}
+.user-table td:nth-child(5) {
+    width: 150px;
+}
+.user-table td:nth-child(6) {
+    width: 100px;
+}
+.user-table td:nth-child(7) {
+    width: 50px;
+    justify-content: center;
+}
+.user-table td:nth-child(8) {
+    width: 50px;
+}
+
+.user-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.user-table tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+.user-hapus-btn {
+    background-color: red;
+    height: 20px;
+    width: 50px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.user-edit-btn {
+    background-color: green;
+    height: 20px;
+    width: 50px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* ==============================================> TAMBAH USER <============================================== */
+.tambah-user-container h1 {
+    padding-bottom: 10px;
+
+}
+.tambah-user-container h2 {
+    padding-bottom: 10px;
+}
+
+.tambah-user-back-btn{
+    height: 30px;
+    width: 70px;
+    background-color: orangered;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.tambah-user-back-btn a{
+    text-decoration: none;
+    color: #fff;
+}
+.txt_field {
+    align-items: center;
+}
+
+.txt_field input {
+    width: 250px;
+    margin-right: 10px;
+}
