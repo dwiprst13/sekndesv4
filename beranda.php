@@ -12,21 +12,44 @@
     $sql = "SELECT gambar FROM artikel WHERE id_artikel = $id_artikel";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST['kirim_keluhan'])){
+            $_SESSION['judul'] = $_POST["judul"];
+            $_SESSION['keluhan'] = $_POST["keluhan"];
+            header("Location: ?page=lapor");
+            exit();
+        }
+        } elseif (isset($_POST['masuk'])) {
+            $email = $_POST["email"];
+            $password = md5($_POST["password"]);
+            $result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+            $row = mysqli_fetch_assoc($result);
+            if(mysqli_num_rows($result) > 0){
+                if($password == $row['password']){
+                    if ($row['role']=='admin') {
+                        $_SESSION['id_user_admin']=$row['id_user'];
+                        $_SESSION['login_admin']='login';
+                        header('Location: dashboard/admin/index.php');
+                        exit();
+                    }else{
+                        $_SESSION['id_user']=$row['id_user'];
+                        $_SESSION['login']='login';
+                        header ('Location: index.php');
+                    } 
+                }
+                else{
+                }
+            }
+        }
+
+    if(isset($_POST["submit"])){
+        
+        }
 ?>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-    <title>SekNdes</title>
+    
     <style>
         .hide-scroll-bar {
             -ms-overflow-style: none;
@@ -38,7 +61,7 @@
     </style>
 </head>
 <body class="bg-gray-100">
-<section class="dark:bg-gray-900">
+    <section class="dark:bg-gray-900">
         <div class="grid w-[85%] h-screen max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
             <div class="mr-auto  place-self-center lg:col-span-7">
                 <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">WEB TERPADU DESA WIJIMULYO</h1>
@@ -81,20 +104,20 @@
             <h1 class="text-2xl font-bold ">ARTIKEL</h1>
         </div>
         <div class="container grid mx-auto px-4 py-16  md:grid-cols-8 lg:grid-cols-12 gap-8">
-            <div class="card-galeri p-5 md:col-span-4 lg:col-span-4 bg-gray-700 rounded-lg">
-                <h1 class="text-center text-lg">Judul Artikel 1</h1>
-                <img src="uploads/artikel/artikel1.jpeg" alt="" class="h-32 w-28 w-full">
-                <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, qui ipsum nisi ut, mollitia nulla eos sapiente, repellendus placeat magni iste autem suscipit laboriosam dolores? Libero distinctio minus neque nulla!</p>
+            <div class="card-galeri p-2 md:col-span-4 lg:col-span-4 bg-gray-700 rounded-lg">
+                <h1 class="text-center pt-3 text-lg">Judul Artikel 1</h1>
+                <img src="uploads/artikel/artikel1.jpeg" alt="" class="h-40 pt-3 w-28 w-full">
+                <p class="text-justify pt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, qui ipsum nisi ut, mollitia nulla eos sapiente, repellendus placeat magni iste autem suscipit laboriosam dolores? Libero distinctio minus neque nulla!</p>
             </div>
-            <div class="card-galeri p-5 md:col-span-4 lg:col-span-4 bg-gray-700 rounded-lg">
-                <h1 class="text-center text-lg">Judul Artikel 2</h1>
-                <img src="uploads/artikel/artikel2.jpeg" alt="" class="h-32 w-28 w-full">
-                <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, qui ipsum nisi ut, mollitia nulla eos sapiente, repellendus placeat magni iste autem suscipit laboriosam dolores? Libero distinctio minus neque nulla!</p>
+            <div class="card-galeri p-2 md:col-span-4 lg:col-span-4 bg-gray-700 rounded-lg">
+                <h1 class="text-center pt-3 text-lg">Judul Artikel 2</h1>
+                <img src="uploads/artikel/artikel2.jpeg" alt="" class="h-40 pt-3 w-28 w-full">
+                <p class="text-justify pt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, qui ipsum nisi ut, mollitia nulla eos sapiente, repellendus placeat magni iste autem suscipit laboriosam dolores? Libero distinctio minus neque nulla!</p>
             </div>
-            <div class="card-galeri p-5  md:col-span-4 lg:col-span-4 bg-gray-700 rounded-lg">
-                <h1 class="text-center text-lg">Judul Artikel 3</h1>
-                <img src="uploads/artikel/artikel3.jpeg" alt="" class="h-32 w-28 w-full">
-                <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, qui ipsum nisi ut, mollitia nulla eos sapiente, repellendus placeat magni iste autem suscipit laboriosam dolores? Libero distinctio minus neque nulla!</p>
+            <div class="card-galeri p-2 md:col-span-4 lg:col-span-4 bg-gray-700 rounded-lg">
+                <h1 class="text-center pt-3 text-lg">Judul Artikel 3</h1>
+                <img src="uploads/artikel/artikel3.jpeg" alt="" class="h-40 pt-3 w-28 w-full">
+                <p class="text-justify pt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, qui ipsum nisi ut, mollitia nulla eos sapiente, repellendus placeat magni iste autem suscipit laboriosam dolores? Libero distinctio minus neque nulla!</p>
             </div>
         </div>
         <div class="flex justify-center pb-16 mx-auto w-[85%]">
@@ -106,15 +129,15 @@
             <h1 class="text-2xl font-bold ">GALERI</h1>
         </div>
         <div class="container grid text-white mx-auto px-4 py-16 w-[85%] md:grid-cols-8 lg:grid-cols-12 gap-8">
-            <div class="card-galeri p-5 bg-gray-700 md:col-span-4 lg:col-span-4 rounded-lg">
+            <div class="card-galeri p-2 bg-gray-700 md:col-span-4 lg:col-span-4 rounded-lg">
                 <img src="uploads/artikel/artikel1.jpeg" alt="" class="h-52 w-28 w-full">
                 <h3 class="text-xl text-center pt-5">Gambar 1</h3>
             </div>
-            <div class="card-galeri p-5 bg-gray-700 md:col-span-4 lg:col-span-4 rounded-lg">
+            <div class="card-galeri p-2 bg-gray-700 md:col-span-4 lg:col-span-4 rounded-lg">
                 <img src="uploads/artikel/artikel1.jpeg" alt="" class="h-52 w-28 w-full">
                 <h3 class="text-xl text-center pt-5">Gambar 2</h3>
             </div>
-            <div class="card-galeri p-5 bg-gray-700 md:col-span-4 lg:col-span-4 rounded-lg">
+            <div class="card-galeri p-2 bg-gray-700 md:col-span-4 lg:col-span-4 rounded-lg">
                 <img src="uploads/artikel/artikel1.jpeg" alt="" class="h-52 w-28 w-full">
                 <h3 class="text-xl text-center pt-5">Gambar 3</h3>
             </div>
@@ -130,13 +153,13 @@
         <div class="container grid mx-auto px-4 py-16 w-[85%]  md:grid-cols-8 lg:grid-cols-12 gap-8">
             <div class="hidden lg:flex lg:col-span-1">
             </div>
-            <div class=" map-card p-5 rounded-lg bg-gray-700 lg:col-span-5 lg:rounded-lg">
-                <p class="text-center pb-5">Wilayah Desa</p>
+            <div class=" map-card p-2 rounded-lg bg-gray-700 lg:col-span-5 lg:rounded-lg">
+                <p class="text-center p-5">Wilayah Desa</p>
                 <iframe class="w-full h-72 rounded-lg" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3842.416309428627!2d110.32573231588937!3d-7.8191062495150225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7af7e2b2acea97%3A0xa3cb91d3e65407b2!2sUniversitas%20Alma%20Ata%20Yogyakarta!5e0!3m2!1sid!2sid!4v1700715283041!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
-            <div class=" map-card p-5 rounded-lg bg-gray-700 lg:col-span-5 lg:rounded-lg">
-                <p class="text-center pb-5">Lokasi Kantor Desa</p>
+            <div class=" map-card p-2 rounded-lg bg-gray-700 lg:col-span-5 lg:rounded-lg">
+                <p class="text-center p-5">Lokasi Kantor Desa</p>
                 <iframe class="w-full h-72 rounded-lg" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3842.416309428627!2d110.32573231588937!3d-7.8191062495150225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7af7e2b2acea97%3A0xa3cb91d3e65407b2!2sUniversitas%20Alma%20Ata%20Yogyakarta!5e0!3m2!1sid!2sid!4v1700715283041!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
@@ -155,21 +178,21 @@
             </div>
             <div class="grid lg:col-span-3 text-white">
                 <?php if(!empty($userInfo)){ ?>
-                    <form class=" space-y-6 mx-auto " action="#" method="POST">
+                    <form class=" space-y-6 mx-auto " action="" method="POST">
                         <div class="w-[100%]">
-                            <label for="email" class="block text-sm text-white font-medium leading-6 ">Keluhan</label>
+                            <label for="judul" class="block text-sm text-white font-medium leading-6 ">Judul Keluhan</label>
                             <div class="mt-2">
-                                <input id="email" name="email" type="email" autocomplete="email" required class="block w-[100%] rounded-md border-0 py-1.5 white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input id="judul" name="judul" type="text" autocomplete="off" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900 white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
                         <div class="flex items-center">
-                            <label for="password" class="block text-sm text-white font-medium leading-6 ">Detail</label>
+                            <label for="keluhan" class="block text-sm text-white font-medium leading-6 ">Detail</label>
                         </div>
                         <div class="mt-2">
-                            <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            <input id="keluhan" name="keluhan" type="text" autocomplete="off" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                         <div>
-                            <button type="submit" class="flex w-[50%] justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Kirim</button>
+                            <button type="submit" name="kirim_keluhan" class="flex w-[50%] justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Kirim</button>
                         </div>
                     </form>
                 <?php }
@@ -178,7 +201,7 @@
                         <div class="w-[100%]">
                             <label for="email" class="block text-sm text-white font-medium leading-6 ">Email</label>
                             <div class="mt-2">
-                                <input id="email" name="email" type="email" autocomplete="email" required class="block w-[100%] rounded-md border-0 py-1.5 white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input id="email" name="email" type="email" autocomplete="email" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
                         <div class="flex items-center">
@@ -188,7 +211,7 @@
                             <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                         <div>
-                            <button type="submit" class="flex w-[50%] justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Masuk</button>
+                            <button type="submit" name="masuk" class="flex w-[50%] justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Masuk</button>
                         </div>
                     </form>
                 <?php } ?>
@@ -207,7 +230,7 @@
         </div>
         <div class="flex w-[85%] mx-auto px-4 py-16 overflow-x-auto hide-scroll-bar space-x-4 p-4">
             <!-- Card 1 -->
-            <div class="flex-shrink-0 w-64 p-3 bg-gray-700 rounded-lg shadow-md">
+            <div class="flex-shrink-0 w-64 p-2 bg-gray-700 rounded-lg shadow-md">
                 <img src="asset/pemerintah/gambar1.jpeg" alt="Gambar 1" class="w-full h-56 object-cover rounded-t-lg">
                 <div class="p-4 text-center text-white">
                     <h2 class="text-lg font-semibold">Saiful Romli</h2>
@@ -215,7 +238,7 @@
                 </div>
             </div>
             <!-- Card 2 -->
-            <div class="flex-shrink-0 w-64 p-3  bg-gray-700 rounded-lg shadow-md">
+            <div class="flex-shrink-0 w-64 p-2  bg-gray-700 rounded-lg shadow-md">
                 <img src="asset/pemerintah/gambar2.jpeg" alt="Gambar 2" class="w-full h-56 object-cover rounded-t-lg">
                 <div class="p-4 text-center text-white">
                     <h2 class="text-lg font-semibold">Salma Mesias G</h2>
@@ -223,7 +246,7 @@
                 </div>
             </div>
             <!-- Card 3 -->
-            <div class="flex-shrink-0 w-64 p-3 bg-gray-700 rounded-lg shadow-md">
+            <div class="flex-shrink-0 w-64 p-2 bg-gray-700 rounded-lg shadow-md">
                 <img src="asset/pemerintah/gambar3.jpeg" alt="Gambar 3" class="w-full h-56 object-cover rounded-t-lg">
                 <div class="p-4 text-center text-white">
                     <h2 class="text-lg font-semibold">Dwi Prasetia</h2>
@@ -231,7 +254,7 @@
                 </div>
             </div>
             <!-- Card 4 -->
-            <div class="flex-shrink-0 w-64 p-3  bg-gray-700 rounded-lg shadow-md">
+            <div class="flex-shrink-0 w-64 p-2  bg-gray-700 rounded-lg shadow-md">
                 <img src="asset/pemerintah/gambar4.jpeg" alt="Gambar 4" class="w-full h-56 object-cover rounded-t-lg">
                 <div class="p-4 text-center text-white">
                     <h2 class="text-lg font-semibold">Sunanan Aulia Putri</h2>
@@ -239,7 +262,7 @@
                 </div>
             </div>
             <!-- Card 5 -->
-            <div class="flex-shrink-0 w-64 p-3  bg-gray-700 rounded-lg shadow-md">
+            <div class="flex-shrink-0 w-64 p-2  bg-gray-700 rounded-lg shadow-md">
                 <img src="asset/pemerintah/gambar5.jpg" alt="Gambar 5" class="w-full h-56 object-cover rounded-t-lg">
                 <div class="p-4 text-center text-white">
                     <h2 class="text-lg font-semibold">Hendriansyah</h2>
@@ -247,7 +270,7 @@
                 </div>
             </div>
             <!-- Card 5 -->
-            <div class="flex-shrink-0 w-64 p-3  bg-gray-700 rounded-lg shadow-md">
+            <div class="flex-shrink-0 w-64 p-2  bg-gray-700 rounded-lg shadow-md">
                 <img src="pemerintah/gambar6.jpg" alt="Gambar 6" class="w-full h-56 object-cover rounded-t-lg">
                 <div class="p-4 text-center text-white">
                     <h2 class="text-lg font-semibold">M. Naufal S.Jk</h2>
@@ -255,7 +278,7 @@
                 </div>
             </div>
             <!-- Card 5 -->
-            <div class="flex-shrink-0 w-64 p-3  bg-gray-700 rounded-lg shadow-md">
+            <div class="flex-shrink-0 w-64 p-2  bg-gray-700 rounded-lg shadow-md">
                 <img src="pemerintah/gambar7.jpg" alt="Gambar 7" class="w-full h-56 object-cover rounded-t-lg">
                 <div class="p-4 text-center text-white">
                     <h2 class="text-lg font-semibold">Alwan Rofail</h2>

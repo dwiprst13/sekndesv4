@@ -4,6 +4,30 @@ include 'config.php';
 $userInfo = @$_SESSION['id_user'];
 $q_data_user_login=mysqli_query($conn, "SELECT * FROM user WHERE id_user='$userInfo'");
 $data_user_login=mysqli_fetch_array($q_data_user_login);
+
+if(isset($_POST["submit"])){
+    $email = $_POST["email"];
+    $password = md5($_POST["password"]);
+    $result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+    $row = mysqli_fetch_assoc($result);
+    if(mysqli_num_rows($result) > 0){
+        if($password == $row['password']){
+            if ($row['role']=='admin') {
+                $_SESSION['id_user_admin']=$row['id_user'];
+                $_SESSION['login_admin']='login';
+                header('Location: dashboard/admin/index.php');
+                exit();
+            }else{
+                $_SESSION['id_user']=$row['id_user'];
+                $_SESSION['login']='login';
+                header ('Location: index.php');
+            } 
+        }
+        else{
+        }
+    }
+    }
+    
 ?>
 
 <!doctype html>
