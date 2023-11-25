@@ -34,31 +34,31 @@ if (isset($_POST["submit"])) {
 } 
 
 if(!empty($userInfo)){ ?>
-    <body class=" w-[85%] h-screen">
-        <div class="flex text-center  text-white h-40 text-lg ">
+    <body class=" w-[80%] h-screen">
+        <div class="flex text-center w-[80%] mx-auto text-white h-40 text-lg ">
             <div class="place-self-center mx-auto">
-                <p>Hallo <span class="text-red"><?php echo $data_user_login['name']; ?></span>, punya keluhan apa?</p>
+                <p>Hallo <span class="text-blue-500"><?php echo $data_user_login['name']; ?></span>, punya keluhan apa?</p>
                 <p>Jangan ragu ragu untuk menyampaikan ke kita ya</p>
             </div>
         </div>
-        <form class="w-[85%] space-y-6 mx-auto text-white pb-32" action="" method="POST" enctype="multipart/form-data" autocomplete="off">
+        <form class="w-[80%] space-y-6 mx-auto text-white pb-32" action="" method="POST" enctype="multipart/form-data" autocomplete="off">
             <div class="mx-auto w-[100%] md:w-[75%] lg:w-[55%]">
                 <label for="judul" class="block text-sm text-white font-medium leading-6 ">Judul</label>
                 <div class="mt-2">
-                    <input id="judul" name="judul" type="text" autocomplete="off" value="<?php echo $judul ?>" required class="block w-[100%]  p-5 rounded-md border-0 py-1.5 text-gray-900 white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    <input id="judul" name="judul" type="text" autocomplete="off" placeholder="Judul" value="<?php echo $judul ?>" required class="block w-[100%]  rounded-md border-0 py-1.5 text-gray-900 white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
             </div>
             <div class="mx-auto w-[100%] md:w-[75%] lg:w-[55%]">
                 <label for="keluhan" class="block text-sm text-white font-medium leading-6 ">Keluhan</label>
                 <div class="mt-2">
-                    <textarea id="keluhan" name="keluhan" rows="4" cols="50" type="text" autocomplete="off" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900 white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"><?php echo $keluhan ?></textarea>
+                    <textarea id="keluhan" name="keluhan" rows="4" cols="50" type="text" placeholder="Detail keluhan" autocomplete="off" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900 white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"><?php echo $keluhan ?></textarea>
                     
                 </div>
             </div>
             <div class="mx-auto w-[100%] md:w-[75%] lg:w-[55%]">
                 <label for="wilayah" class="block text-sm text-white font-medium leading-6 ">Wilayah</label>
                 <div class="mt-2">
-                    <input id="wilayah" name="wilayah" type="text" autocomplete="off" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900 white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    <input id="wilayah" name="wilayah" type="text" autocomplete="off" placeholder="Wilayah" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900 white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
             </div>
             <div class="mx-auto w-[100%] md:w-[75%] lg:w-[55%]">

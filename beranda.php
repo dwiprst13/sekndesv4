@@ -1,18 +1,5 @@
 
 <?php
-
-    $aduan = "SELECT * FROM aduan ORDER BY tanggal_masukkan DESC LIMIT 3";
-    $galeri = "SELECT * FROM galeri ORDER BY id_doc DESC LIMIT 3";
-    $artikel = "SELECT * FROM artikel ORDER BY id_artikel DESC LIMIT 3";
-    $result_aduan = mysqli_query($conn, $aduan);
-    $result_galeri = mysqli_query($conn, $galeri);
-    $result_artikel = mysqli_query($conn, $artikel);
-
-    $id_artikel = 1;
-    $sql = "SELECT gambar FROM artikel WHERE id_artikel = $id_artikel";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['kirim_keluhan'])){
             $_SESSION['judul'] = $_POST["judul"];
@@ -20,7 +7,7 @@
             header("Location: ?page=lapor");
             exit();
         }
-        } elseif (isset($_POST['masuk'])) {
+        } elseif(isset($_POST["masuk"])){
             $email = $_POST["email"];
             $password = md5($_POST["password"]);
             $result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
@@ -41,11 +28,9 @@
                 else{
                 }
             }
-        }
-
-    if(isset($_POST["submit"])){
+            }
         
-        }
+
 ?>
 
 <head>
@@ -60,9 +45,11 @@
         }
     </style>
 </head>
-<body class="bg-gray-100">
-    <section class="dark:bg-gray-900">
-        <div class="grid w-[85%] h-screen max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+
+<? echo"$email" ?>
+<body class="bg-gray-800">
+    <section class="bg-gray-900  w-[80%] mx-auto">
+        <div class="grid h-screen max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
             <div class="mr-auto  place-self-center lg:col-span-7">
                 <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">WEB TERPADU DESA WIJIMULYO</h1>
                 <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos iste esse illo sapiente repellat labore voluptatum magni eligendi rerum hic placeat consequatur ab architecto neque, optio obcaecati. Sequi, fuga adipisci.</p>
@@ -87,7 +74,7 @@
             </div>                
         </div>
     </section>
-    <section class="bg-gray-900  w-[85%] mx-auto">
+    <section class="bg-gray-900   w-[80%] mx-auto">
         <div class="container grid mx-auto px-4 py-16 gap-8 lg:grid-cols-12">
             <div class="visi p-5 lg:col-span-6 bg-gray-700 rounded-lg">
                 <h1 class="text-center text-white text-2xl font-bold pb-5">VISI</h1>
@@ -99,36 +86,36 @@
             </div>
         </div>
     </section>
-    <section class="bg-gray-900 text-white w-[85%] mx-auto ">
+    <section class="bg-gray-900 text-white  w-[80%] mx-auto ">
         <div class="container grid mx-auto text-center ">
             <h1 class="text-2xl font-bold ">ARTIKEL</h1>
         </div>
-        <div class="container grid mx-auto px-4 py-16  md:grid-cols-8 lg:grid-cols-12 gap-8">
-            <div class="card-galeri p-2 md:col-span-4 lg:col-span-4 bg-gray-700 rounded-lg">
+        <div class="container grid text-white mx-auto px-4 py-16  w-[80%] md:grid-cols-8 lg:grid-cols-12 gap-8">
+            <div class="card-galeri p-2 bg-gray-700 md:col-span-4 lg:col-span-4 rounded-lg">
                 <h1 class="text-center pt-3 text-lg">Judul Artikel 1</h1>
-                <img src="uploads/artikel/artikel1.jpeg" alt="" class="h-40 pt-3 w-28 w-full">
+                <img src="uploads/artikel/artikel1.jpeg" alt="" class="h-52 w-28 w-full">
                 <p class="text-justify pt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, qui ipsum nisi ut, mollitia nulla eos sapiente, repellendus placeat magni iste autem suscipit laboriosam dolores? Libero distinctio minus neque nulla!</p>
             </div>
-            <div class="card-galeri p-2 md:col-span-4 lg:col-span-4 bg-gray-700 rounded-lg">
+            <div class="card-galeri p-2 bg-gray-700 md:col-span-4 lg:col-span-4 rounded-lg">
                 <h1 class="text-center pt-3 text-lg">Judul Artikel 2</h1>
-                <img src="uploads/artikel/artikel2.jpeg" alt="" class="h-40 pt-3 w-28 w-full">
+                <img src="uploads/artikel/artikel2.jpeg" alt="" class="h-52 w-28 w-full">
                 <p class="text-justify pt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, qui ipsum nisi ut, mollitia nulla eos sapiente, repellendus placeat magni iste autem suscipit laboriosam dolores? Libero distinctio minus neque nulla!</p>
             </div>
-            <div class="card-galeri p-2 md:col-span-4 lg:col-span-4 bg-gray-700 rounded-lg">
+            <div class="card-galeri p-2 bg-gray-700 md:col-span-4 lg:col-span-4 rounded-lg">
                 <h1 class="text-center pt-3 text-lg">Judul Artikel 3</h1>
-                <img src="uploads/artikel/artikel3.jpeg" alt="" class="h-40 pt-3 w-28 w-full">
+                <img src="uploads/artikel/artikel3.jpeg" alt="" class="h-52 w-28 w-full">
                 <p class="text-justify pt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, qui ipsum nisi ut, mollitia nulla eos sapiente, repellendus placeat magni iste autem suscipit laboriosam dolores? Libero distinctio minus neque nulla!</p>
             </div>
         </div>
-        <div class="flex justify-center pb-16 mx-auto w-[85%]">
+        <div class="flex justify-center pb-16 mx-auto  w-[80%]">
             <a class="decoration-none bg-blue-500 w-40 text-center p-1 rounded-lg hover:shadow-md hover:shadow-white" href="?page=artikel">Selengkapnya</a>
         </div>
     </section>
-    <section class="bg-gray-900 text-white w-[85%] mx-auto">
+    <section class="bg-gray-900 text-white  w-[80%] mx-auto">
         <div class="container grid mx-auto text-center">
             <h1 class="text-2xl font-bold ">GALERI</h1>
         </div>
-        <div class="container grid text-white mx-auto px-4 py-16 w-[85%] md:grid-cols-8 lg:grid-cols-12 gap-8">
+        <div class="container grid text-white mx-auto px-4 py-16  w-[80%] md:grid-cols-8 lg:grid-cols-12 gap-8">
             <div class="card-galeri p-2 bg-gray-700 md:col-span-4 lg:col-span-4 rounded-lg">
                 <img src="uploads/artikel/artikel1.jpeg" alt="" class="h-52 w-28 w-full">
                 <h3 class="text-xl text-center pt-5">Gambar 1</h3>
@@ -142,15 +129,15 @@
                 <h3 class="text-xl text-center pt-5">Gambar 3</h3>
             </div>
         </div>
-        <div class="flex justify-center pb-16 mx-auto w-[85%]">
+        <div class="flex justify-center pb-16 mx-auto  w-[80%]">
             <a class="decoration-none bg-blue-500 w-40 text-center p-1 rounded-lg hover:shadow-md hover:shadow-white" href="?page=galeri">Selengkapnya</a>
         </div>
     </section>
-    <section class="bg-gray-900 text-white pb-20 w-[85%] mx-auto">
-        <div class="container grid mx-auto text-center w-[85%]">
+    <section class="bg-gray-900 text-white pb-20  w-[80%] mx-auto">
+        <div class="container grid mx-auto text-center  w-[80%]">
             <h1 class="text-2xl font-bold mx-auto ">LOKASI</h1>
         </div>
-        <div class="container grid mx-auto px-4 py-16 w-[85%]  md:grid-cols-8 lg:grid-cols-12 gap-8">
+        <div class="container grid mx-auto px-4 py-16  w-[80%]  md:grid-cols-8 lg:grid-cols-12 gap-8">
             <div class="hidden lg:flex lg:col-span-1">
             </div>
             <div class=" map-card p-2 rounded-lg bg-gray-700 lg:col-span-5 lg:rounded-lg">
@@ -165,7 +152,7 @@
             </div>
         </div>
     </section>
-    <section class="lapor bg-gray-900 text-white w-[85%] mx-auto">
+    <section class="lapor bg-gray-900 text-white  w-[80%] mx-auto">
         <div class="container bg-gray-700 rounded-lg grid  px-4 py-16  md:grid-cols-8 lg:grid-cols-12 gap-3">
             <div class="col-span-1 hidden lg:inline-block"></div>
             <div class="lg:col-span-4 min-h-72 text-center object-center text-white place-self-center">
@@ -182,35 +169,33 @@
                         <div class="w-[100%]">
                             <label for="judul" class="block text-sm text-white font-medium leading-6 ">Judul Keluhan</label>
                             <div class="mt-2">
-                                <input id="judul" name="judul" type="text" autocomplete="off" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900 white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input id="judul" name="judul" type="text" autocomplete="off" placeholder="Judul Keluhan" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900 white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
-                        <div class="flex items-center">
+                        <div class="w-[100%]">
                             <label for="keluhan" class="block text-sm text-white font-medium leading-6 ">Detail</label>
+                            <div class="mt-2">
+                                <input id="keluhan" name="keluhan" type="text" placeholder="Detail Keluhan" autocomplete="off" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
-                        <div class="mt-2">
-                            <input id="keluhan" name="keluhan" type="text" autocomplete="off" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                        </div>
-                        <div>
+                        <div class="pt-8 ">
                             <button type="submit" name="kirim_keluhan" class="flex w-[50%] justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Kirim</button>
                         </div>
                     </form>
                 <?php }
                 else { ?>
-                    <form class=" space-y-6 mx-auto " action="#" method="POST">
+                    <form class=" space-y-6 mx-auto " action="" method="POST">
                         <div class="w-[100%]">
                             <label for="email" class="block text-sm text-white font-medium leading-6 ">Email</label>
                             <div class="mt-2">
-                                <input id="email" name="email" type="email" autocomplete="email" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input id="email" name="email" type="email" autocomplete="email" placeholder="Email" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
-                        <div class="flex items-center">
+                        <div class="w-[100%]">
                             <label for="password" class="block text-sm text-white font-medium leading-6 ">Kata Sandi</label>
+                            <div class="mt-2">
+                                <input id="password" name="password" type="password" placeholder="Kata Sandi" autocomplete="current-password" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
-                        <div class="mt-2">
-                            <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                        </div>
-                        <div>
+                        <div class="flex items-center pt-8">
                             <button type="submit" name="masuk" class="flex w-[50%] justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Masuk</button>
                         </div>
                     </form>
@@ -224,11 +209,11 @@
             <p></p>
         </div>
     </section>
-    <section class="bg-gray-900 pb-20 w-[85%] mx-auto">
+    <section class="bg-gray-900 pb-20  w-[80%] mx-auto">
         <div class="container grid text-center">
             <h1 class="text-2xl text-white font-bold mx-auto ">PERANGKAT DESA</h1>
         </div>
-        <div class="flex w-[85%] mx-auto px-4 py-16 overflow-x-auto hide-scroll-bar space-x-4 p-4">
+        <div class="flex  mx-auto px-4 py-16 overflow-x-auto hide-scroll-bar space-x-4 p-4">
             <!-- Card 1 -->
             <div class="flex-shrink-0 w-64 p-2 bg-gray-700 rounded-lg shadow-md">
                 <img src="asset/pemerintah/gambar1.jpeg" alt="Gambar 1" class="w-full h-56 object-cover rounded-t-lg">
@@ -289,7 +274,7 @@
     </section>
 
     <footer class="relative bg-gray-800 py-8 mx-auto">
-        <div class=" mx-auto px-4 w-[85%]">
+        <div class=" mx-auto px-4  w-[80%]">
             <div class="flex flex-wrap text-left lg:text-left">
             <div class="w-full lg:w-6/12 px-4 ">
                 <h4 class="text-3xl fonat-semibold text-center md:text-left text-white">Pemerintah Desa Wijimulyo</h4>

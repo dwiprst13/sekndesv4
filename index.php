@@ -27,7 +27,7 @@ if(isset($_POST["submit"])){
         }
     }
     }
-    
+
 ?>
 
 <!doctype html>
@@ -52,7 +52,7 @@ if(isset($_POST["submit"])){
 
 <body class="font-[Poppins] bg-white ">
     <header class="bg-blue-700 sticky top-0">
-        <nav class="flex justify-between items-center h-20 w-[85%]  mx-auto" >
+        <nav class="flex justify-between items-center h-20 w-[75%]  mx-auto" >
             <div>
                 <h1><a class="text-white text-2xl font-bold" href="#">SekNdes</a></h1>
             </div>
