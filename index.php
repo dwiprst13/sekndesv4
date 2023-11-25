@@ -31,7 +31,7 @@ if(isset($_POST["submit"])){
 ?>
 
 <!doctype html>
-<html>
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,7 +50,7 @@ if(isset($_POST["submit"])){
     <link rel="icon" type="image/x-icon" href="asset/pemerintah/gambar3.jpeg">
 </head>
 
-<body class="font-[Poppins] bg-white ">
+<body chrome-hide-address-bar class="font-[Poppins] bg-white">
     <header class="bg-blue-700 sticky top-0">
         <nav class="flex justify-between items-center h-20 w-[75%]  mx-auto" >
             <div>
@@ -112,7 +112,7 @@ if(isset($_POST["submit"])){
 
     </header>
 
-    <div class="body-content bg-gray-900 ">
+    <div class="body-content bg-gray-900 top-20">
             <?php
                 $page = isset($_GET['page']) ? $_GET['page'] : 'beranda';
                 switch ($page) {

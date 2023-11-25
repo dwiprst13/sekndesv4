@@ -35,7 +35,7 @@ if (isset($_POST["submit"])) {
 
 if(!empty($userInfo)){ ?>
     <body class=" w-[80%] h-screen">
-        <div class="flex text-center w-[80%] mx-auto text-white h-40 text-lg ">
+        <div class="flex text-center text-sm md:text-base w-[80%] mx-auto text-white h-40 text-lg ">
             <div class="place-self-center mx-auto">
                 <p>Hallo <span class="text-blue-500"><?php echo $data_user_login['name']; ?></span>, punya keluhan apa?</p>
                 <p>Jangan ragu ragu untuk menyampaikan ke kita ya</p>

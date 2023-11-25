@@ -6,8 +6,8 @@
             $_SESSION['keluhan'] = $_POST["keluhan"];
             header("Location: ?page=lapor");
             exit();
-        }
-        } elseif(isset($_POST["masuk"])){
+        } 
+        elseif(isset($_POST["masuk"])){
             $email = $_POST["email"];
             $password = md5($_POST["password"]);
             $result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
@@ -29,6 +29,7 @@
                 }
             }
             }
+        } 
         
 
 ?>
@@ -47,13 +48,13 @@
 </head>
 
 <? echo"$email" ?>
-<body class="bg-gray-800">
-    <section class="bg-gray-900  w-[80%] mx-auto">
-        <div class="grid h-screen max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-            <div class="mr-auto  place-self-center lg:col-span-7">
+<body chrome-hide-address-bar class="bg-gray-800">
+    <section class="bg-gray-900 w-[100%] md:w-[85%] lg:w-[80%] mx-auto">
+        <div class="grid h-screen w-[90%] md:w-[85%] lg:w-[80%] px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+            <div class="mr-auto place-self-center lg:col-span-7">
                 <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">WEB TERPADU DESA WIJIMULYO</h1>
                 <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos iste esse illo sapiente repellat labore voluptatum magni eligendi rerum hic placeat consequatur ab architecto neque, optio obcaecati. Sequi, fuga adipisci.</p>
-                <a href="#" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
+                <a href="#visi-misi" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900 ">
                     Jelajahi
                     <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                 </a>
@@ -74,7 +75,10 @@
             </div>                
         </div>
     </section>
-    <section class="bg-gray-900   w-[80%] mx-auto">
+    <section id="visi-misi" class="bg-gray-900 w-[100%] md:w-[85%] lg:w-[80%] mx-auto">
+        <div class="container text-white grid mx-auto text-center ">
+            <h1 class="text-2xl font-bold ">VISI & MISI</h1>
+        </div>
         <div class="container grid mx-auto px-4 py-16 gap-8 lg:grid-cols-12">
             <div class="visi p-5 lg:col-span-6 bg-gray-700 rounded-lg">
                 <h1 class="text-center text-white text-2xl font-bold pb-5">VISI</h1>
@@ -86,58 +90,68 @@
             </div>
         </div>
     </section>
-    <section class="bg-gray-900 text-white  w-[80%] mx-auto ">
+    <section class="bg-gray-900 text-white w-[100%] md:w-[85%] lg:w-[80%] mx-auto ">
         <div class="container grid mx-auto text-center ">
             <h1 class="text-2xl font-bold ">ARTIKEL</h1>
         </div>
-        <div class="container grid text-white mx-auto px-4 py-16  w-[80%] md:grid-cols-8 lg:grid-cols-12 gap-8">
+        <div class="container grid text-white mx-auto px-4 py-16 w-[90%] md:w-[85%] lg:w-[80%] md:grid-cols-8 lg:grid-cols-12 gap-8">
             <div class="card-galeri p-2 bg-gray-700 md:col-span-4 lg:col-span-4 rounded-lg">
                 <h1 class="text-center pt-3 text-lg">Judul Artikel 1</h1>
-                <img src="uploads/artikel/artikel1.jpeg" alt="" class="h-52 w-28 w-full">
-                <p class="text-justify pt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, qui ipsum nisi ut, mollitia nulla eos sapiente, repellendus placeat magni iste autem suscipit laboriosam dolores? Libero distinctio minus neque nulla!</p>
+                <img src="uploads/artikel/artikel1.jpeg" alt="" class="h-52 pt-3 w-28 w-full">
+                <p class="text-justify pt-3 line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, qui ipsum nisi ut, mollitia nulla eos sapiente, repellendus placeat magni iste autem suscipit laboriosam dolores? Libero distinctio minus neque nulla!</p>
+                <button class="flex justify-center px-3 py-3 mx-auto">
+                    <a class="decoration-none bg-blue-500 w-24 text-center p-1 rounded-lg hover:shadow-md hover:shadow-white" href="">Baca >></a>
+                </button>
             </div>
             <div class="card-galeri p-2 bg-gray-700 md:col-span-4 lg:col-span-4 rounded-lg">
                 <h1 class="text-center pt-3 text-lg">Judul Artikel 2</h1>
-                <img src="uploads/artikel/artikel2.jpeg" alt="" class="h-52 w-28 w-full">
-                <p class="text-justify pt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, qui ipsum nisi ut, mollitia nulla eos sapiente, repellendus placeat magni iste autem suscipit laboriosam dolores? Libero distinctio minus neque nulla!</p>
+                <img src="uploads/artikel/artikel2.jpeg" alt="" class="h-52 pt-3 w-28 w-full">
+                <p class="text-justify pt-3 line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, qui ipsum nisi ut, mollitia nulla eos sapiente, repellendus placeat magni iste autem suscipit laboriosam dolores? Libero distinctio minus neque nulla!</p>
+                <button class="flex justify-center px-3 py-3 mx-auto">
+                    <a class="decoration-none bg-blue-500 w-24 text-center p-1 rounded-lg hover:shadow-md hover:shadow-white" href="">Baca >></a>
+                </button>
             </div>
             <div class="card-galeri p-2 bg-gray-700 md:col-span-4 lg:col-span-4 rounded-lg">
                 <h1 class="text-center pt-3 text-lg">Judul Artikel 3</h1>
-                <img src="uploads/artikel/artikel3.jpeg" alt="" class="h-52 w-28 w-full">
-                <p class="text-justify pt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, qui ipsum nisi ut, mollitia nulla eos sapiente, repellendus placeat magni iste autem suscipit laboriosam dolores? Libero distinctio minus neque nulla!</p>
+                <img src="uploads/artikel/artikel3.jpeg" alt="" class="h-52 pt-3 w-28 w-full">
+                <p class="text-justify pt-3 line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quasi quis magni quidem error earum quaerat omnis soluta quo blanditiis ab aliquid debitis, nulla dolorem rerum exercitationem autem incidunt pariatur?</p>
+                <button class="flex justify-center px-3 py-3 mx-auto">
+                    <a class="decoration-none bg-blue-500 w-24 text-center p-1 rounded-lg hover:shadow-md hover:shadow-white" href="">Baca >></a>
+                </button>
             </div>
         </div>
-        <div class="flex justify-center pb-16 mx-auto  w-[80%]">
+        <div class="flex justify-center pb-16 mx-auto w-[90%] md:w-[85%] lg:w-[80%]">
             <a class="decoration-none bg-blue-500 w-40 text-center p-1 rounded-lg hover:shadow-md hover:shadow-white" href="?page=artikel">Selengkapnya</a>
         </div>
     </section>
-    <section class="bg-gray-900 text-white  w-[80%] mx-auto">
+    <section class="bg-gray-900 text-white w-[100%] md:w-[85%] lg:w-[80%] mx-auto">
         <div class="container grid mx-auto text-center">
             <h1 class="text-2xl font-bold ">GALERI</h1>
         </div>
-        <div class="container grid text-white mx-auto px-4 py-16  w-[80%] md:grid-cols-8 lg:grid-cols-12 gap-8">
+        <div class="container grid text-white mx-auto px-4 py-16 w-[90%] md:w-[85%] lg:w-[80%] md:grid-cols-8 lg:grid-cols-12 gap-8">
             <div class="card-galeri p-2 bg-gray-700 md:col-span-4 lg:col-span-4 rounded-lg">
-                <img src="uploads/artikel/artikel1.jpeg" alt="" class="h-52 w-28 w-full">
-                <h3 class="text-xl text-center pt-5">Gambar 1</h3>
+                <img src="uploads/artikel/artikel1.jpeg" alt="" class="h-52 pb-3 w-28 w-full">
+                <h3 class="text-center pb-3">Gambar 1</h3>
             </div>
             <div class="card-galeri p-2 bg-gray-700 md:col-span-4 lg:col-span-4 rounded-lg">
-                <img src="uploads/artikel/artikel1.jpeg" alt="" class="h-52 w-28 w-full">
-                <h3 class="text-xl text-center pt-5">Gambar 2</h3>
+                <img src="uploads/artikel/artikel1.jpeg" alt="" class="h-52 pb-3 w-28 w-full">
+                <h3 class="text-center pb-3">Gambar 2</h3>
             </div>
             <div class="card-galeri p-2 bg-gray-700 md:col-span-4 lg:col-span-4 rounded-lg">
-                <img src="uploads/artikel/artikel1.jpeg" alt="" class="h-52 w-28 w-full">
-                <h3 class="text-xl text-center pt-5">Gambar 3</h3>
+                <img src="uploads/artikel/artikel1.jpeg" alt="" class="h-52 pb-3 w-28 w-full">
+                <h3 class="text-center pb-3">Gambar 3</h3>
+                
             </div>
         </div>
-        <div class="flex justify-center pb-16 mx-auto  w-[80%]">
+        <div class="flex justify-center pb-16 mx-auto w-[90%] md:w-[85%] lg:w-[80%]">
             <a class="decoration-none bg-blue-500 w-40 text-center p-1 rounded-lg hover:shadow-md hover:shadow-white" href="?page=galeri">Selengkapnya</a>
         </div>
     </section>
-    <section class="bg-gray-900 text-white pb-20  w-[80%] mx-auto">
+    <section class="bg-gray-900 text-white pb-20 w-[100%] md:w-[85%] lg:w-[80%] mx-auto">
         <div class="container grid mx-auto text-center  w-[80%]">
             <h1 class="text-2xl font-bold mx-auto ">LOKASI</h1>
         </div>
-        <div class="container grid mx-auto px-4 py-16  w-[80%]  md:grid-cols-8 lg:grid-cols-12 gap-8">
+        <div class="container grid mx-auto px-4 py-16  w-[90%] md:w-[85%] lg:w-[80%]  md:grid-cols-8 lg:grid-cols-12 gap-8">
             <div class="hidden lg:flex lg:col-span-1">
             </div>
             <div class=" map-card p-2 rounded-lg bg-gray-700 lg:col-span-5 lg:rounded-lg">
@@ -152,8 +166,8 @@
             </div>
         </div>
     </section>
-    <section class="lapor bg-gray-900 text-white  w-[80%] mx-auto">
-        <div class="container bg-gray-700 rounded-lg grid  px-4 py-16  md:grid-cols-8 lg:grid-cols-12 gap-3">
+    <section class="lapor bg-gray-900 text-white w-[100%] md:w-[85%] lg:w-[80%] mx-auto">
+        <div class="container bg-gray-700 rounded-lg grid mx-auto w-[90%] md:w-[85%] lg:w-[80%] px-4 py-16  md:grid-cols-8 lg:grid-cols-12 gap-3">
             <div class="col-span-1 hidden lg:inline-block"></div>
             <div class="lg:col-span-4 min-h-72 text-center object-center text-white place-self-center">
                 <h2>DESA TERPADU
@@ -177,13 +191,13 @@
                             <div class="mt-2">
                                 <input id="keluhan" name="keluhan" type="text" placeholder="Detail Keluhan" autocomplete="off" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
-                        <div class="pt-8 ">
-                            <button type="submit" name="kirim_keluhan" class="flex w-[50%] justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Kirim</button>
+                        <div class="flex pt-8 ">
+                            <button type="submit" name="kirim_keluhan" class="flex w-[50%] justify-center rounded-md bg-blue-500 px-3 py-1.5 mx-auto text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Kirim</button>
                         </div>
                     </form>
                 <?php }
                 else { ?>
-                    <form class=" space-y-6 mx-auto " action="" method="POST">
+                    <form class=" space-y-6 mx-auto" action="" method="POST">
                         <div class="w-[100%]">
                             <label for="email" class="block text-sm text-white font-medium leading-6 ">Email</label>
                             <div class="mt-2">
@@ -195,8 +209,8 @@
                             <div class="mt-2">
                                 <input id="password" name="password" type="password" placeholder="Kata Sandi" autocomplete="current-password" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
-                        <div class="flex items-center pt-8">
-                            <button type="submit" name="masuk" class="flex w-[50%] justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Masuk</button>
+                        <div class="text-center pt-8">
+                            <button type="submit" name="masuk" class="flex w-[50%] justify-center rounded-md bg-blue-500 px-3 py-1.5 mx-auto text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Masuk</button>
                         </div>
                     </form>
                 <?php } ?>
@@ -209,11 +223,11 @@
             <p></p>
         </div>
     </section>
-    <section class="bg-gray-900 pb-20  w-[80%] mx-auto">
+    <section class="bg-gray-900 pb-20 w-[100%] md:w-[85%] lg:w-[80%] mx-auto">
         <div class="container grid text-center">
             <h1 class="text-2xl text-white font-bold mx-auto ">PERANGKAT DESA</h1>
         </div>
-        <div class="flex  mx-auto px-4 py-16 overflow-x-auto hide-scroll-bar space-x-4 p-4">
+        <div class="flex w-[90%] md:w-[85%] lg:w-[80%] mx-auto px-4 py-16 overflow-x-auto hide-scroll-bar space-x-4 p-4">
             <!-- Card 1 -->
             <div class="flex-shrink-0 w-64 p-2 bg-gray-700 rounded-lg shadow-md">
                 <img src="asset/pemerintah/gambar1.jpeg" alt="Gambar 1" class="w-full h-56 object-cover rounded-t-lg">
@@ -273,8 +287,8 @@
         </div>
     </section>
 
-    <footer class="relative bg-gray-800 py-8 mx-auto">
-        <div class=" mx-auto px-4  w-[80%]">
+    <footer class=" bg-gray-800 py-8 mx-auto">
+        <div class=" mx-auto px-4 w-[100%] md:w-[85%] lg:w-[80%]">
             <div class="flex flex-wrap text-left lg:text-left">
             <div class="w-full lg:w-6/12 px-4 ">
                 <h4 class="text-3xl fonat-semibold text-center md:text-left text-white">Pemerintah Desa Wijimulyo</h4>
