@@ -17,11 +17,10 @@ if (isset($_POST["submit"])) {
     $target_dir = "uploads/"; 
     $target_file = $target_dir . basename($_FILES["foto"]["name"]);
     move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
-
     $sql = "INSERT INTO aduan (judul_keluhan, keluhan, wilayah, foto, id_user, tanggal_masukkan) VALUES ('$judul', '$keluhan', '$wilayah', '$target_file', $userInfo, CURRENT_TIMESTAMP)";
 
     if ($conn->query($sql) === TRUE) {
-        unset($_SESSION['judul']);
+        unset($_SESSION['judul']); //Membersihkan sesi judul
         unset($_SESSION['keluhan']);
         echo "BERHASIL UPLOAD";
         header("Location: ?page=lapor");

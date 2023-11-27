@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+require 'config.php'; //koneksi ke database
 
 if(isset($_POST["submit"])){
 $email = $_POST["email"];

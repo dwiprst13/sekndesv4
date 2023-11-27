@@ -35,27 +35,30 @@ $data_user_login=mysqli_fetch_array($q_data_user_login);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
     <!-- FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet"> 
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script> 
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-    <script src="main.js" defer></script>
-    <title>SekNdes</title>
-    <link rel="stylesheet" href="main.css">
-    <link rel="icon" type="image/x-icon" href="asset/pemerintah/gambar3.jpeg">
-    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> -->
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="css/animate.css">
+    <!-- My Asset -->
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="main.css">
+    <!-- Gambar Tab -->
+    <link rel="icon" type="image/x-icon" href="asset/pemerintah/gambar6.jpg">
+    <title>SekNdes</title>
 </head>
 
 <body chrome-hide-address-bar class="font-[Poppins] bg-white">
+    <!-- Navbar -->
     <header class="bg-blue-700 sticky top-0">
-        <nav class="flex justify-between items-center h-20 w-[75%]  mx-auto" >
+        <nav class="flex justify-between items-center h-20 w-[75%] z-50 mx-auto" >
             <div>
                 <h1><a class="text-white text-2xl font-bold" href="#">SekNdes</a></h1>
             </div>
@@ -83,10 +86,12 @@ $data_user_login=mysqli_fetch_array($q_data_user_login);
                 </ul>
             </div>
             <div class="flex items-center gap-6" >
-                <?php if(!empty($userInfo)){ ?>
+                <!-- Memastikan ada aktivitas login atau tidak -->
+                <?php if(!empty($userInfo)){ ?> <!-- Jika Ada -->
                     <div class="user-info">
                         <button id="logoutBtn" class="bg-[#a6c1ee] text-white px-2 py-1 lg:px-5 lg:py-2 rounded-lg bg-blue-500 hover:bg-blue-300 active:border-none">
-                        <?php
+                        <?php 
+                            // Menampilkan nama user ke dalam button
                             $fullName = $data_user_login['name'];
                             $parts = explode(' ', $fullName);
                             $firstName = $parts[0];
@@ -95,14 +100,14 @@ $data_user_login=mysqli_fetch_array($q_data_user_login);
                         </button>
                     </div>
                 <?php }
-                else { ?>
+                else { ?> <!-- Jika Tidak -->
                     <button class="bg-[#a6c1ee] text-white px-2 py-1 lg:px-5 lg:py-2 rounded-lg bg-blue-500 hover:bg-blue-300"><a href="login.php">Masuk</a></button>
                 <?php } ?>
-                
-                <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-
+                    <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-
                 xl  text-white cursor-pointer lg:hidden"></ion-icon>
             </div>
 
+            <!-- MODAL KONFIRMASI LOGOUT -->
             <div id="myModal" class="modal">
                 <div class="modal-content">
                     <p>Apakah Anda yakin ingin keluar dari akun Anda?</p>
@@ -115,13 +120,15 @@ $data_user_login=mysqli_fetch_array($q_data_user_login);
 
     </header>
 
-    <div class="body-content bg-white dark:bg-gray-900  dark:text-white top-20">
+    <!-- Body -->
+    <!-- Include Methode -->
+    <div class="body-content bg-white dark:bg-gray-900 z-1 dark:text-white top-20">
             <?php
                 $page = isset($_GET['page']) ? $_GET['page'] : 'beranda';
                 switch ($page) {
-                    case 'artikel':
-                    include 'artikel.php';
-                    break;
+                    case 'artikel': //jika klik link ke "?page=artikel"
+                    include 'artikel.php'; //muat halaman artikel.php
+                    break; // akhiri action
                     case 'profil':
                     include 'profil.php';
                     break;
@@ -146,37 +153,11 @@ $data_user_login=mysqli_fetch_array($q_data_user_login);
                 }
             ?>
         </div>
-        <script src="js/wow.min.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
-        new WOW().init();
+            AOS.init();
         </script>
 
-    <script>
-        const navLinks = document.querySelector('.nav-links')
-        function onToggleMenu(e){
-            e.name = e.name === 'menu' ? 'close' : 'menu'
-            navLinks.classList.toggle('top-[9%]')
-        }
-
-        var modal = document.getElementById('myModal');
-        var btn = document.getElementById('logoutBtn');
-        var modalButtonDiv = document.querySelector('.modalButton');
-        btn.onclick = function() {
-        modal.style.display = 'block';
-        };
-        window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = 'none';
-        }
-        };
-        modalButtonDiv.addEventListener('click', function(event) {
-            if (event.target.id === 'cancelLogout') {
-                modal.style.display = 'none';
-            } else if (event.target.id === 'confirmLogout') {
-                window.location.href = 'logout.php';
-            }
-        });
-    </script>
 </body>
 
 </html>

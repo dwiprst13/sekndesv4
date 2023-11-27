@@ -168,7 +168,7 @@ INSERT INTO `user` (`id_user`, `name`, `email`, `password`, `phone`, `nik`, `ped
 (7, 'Salma Mesias Gesuri Wirata Kusuma', 'salma@gmail.com', 'f6852b2a3ac0cd7e69c801f69eddb57a', '0824213411', '241414532', 'Kronjong', 'user'),
 (8, 'Nopal Setyanto', 'nopal@gmail.com', '6efc67e68005e7503df580d11e5e7a23', '081328358265', '340110131031238', 'Kranjing', 'user'),
 (9, 'Romli Setiawan', 'romli@gmail.com', 'b68e37fba2754b2e19f1b53969b75e49', '08241412421', '34011012321', 'krenjeng', 'user'),
-(10, 'sunanan', 'sunan@gmail.com', '1be3e450f77a06f4800f1bb281cf0413', '081328672984', '3401103232799840', 'Krinjang', 'user');
+(10, 'Sunanan', 'sunan@gmail.com', '1be3e450f77a06f4800f1bb281cf0413', '081328672984', '3401103232799840', 'Krinjang', 'user');
 
 --
 -- Indexes for dumped tables

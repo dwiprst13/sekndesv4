@@ -1,16 +1,19 @@
 
 <?php
+    // Menentukan button di bagian mana yang di klik untuk melakukan aksi
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Mengklik tombol kirim keluhan 
         if (isset($_POST['kirim_keluhan'])){
             $_SESSION['judul'] = $_POST["judul"];
-            $_SESSION['keluhan'] = $_POST["keluhan"];
+            $_SESSION['keluhan'] = $_POST["keluhan"]; // Menyimpan sesi keluhan & judul untuk dikirim ke lapor.php
             header("Location: ?page=lapor");
             exit();
         } 
+        // Mengklik tombol login
         elseif(isset($_POST["masuk"])){
             $email = $_POST["email"];
             $password = md5($_POST["password"]);
-            $result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+            $result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'"); //Memanggil data user dari db untuk sesi aktif
             $row = mysqli_fetch_assoc($result);
             if(mysqli_num_rows($result) > 0){
                 if($password == $row['password']){
@@ -30,8 +33,6 @@
             }
             }
         } 
-        
-
 ?>
 
 <head>
@@ -46,9 +47,8 @@
         }
     </style>
 </head>
-
-<? echo"$email" ?>
 <body chrome-hide-address-bar class="bg-white dark:bg-gray-900  dark:text-white">
+    <!-- Banner -->
     <section class="  w-[100%] md:w-[85%] lg:w-[80%] mx-auto">
         <div class="grid h-screen w-[90%] md:w-[85%] lg:w-[80%] px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
             <div class="mr-auto place-self-center lg:col-span-7">
@@ -75,6 +75,7 @@
             </div>                
         </div>
     </section>
+    <!-- Visi & Misi -->
     <section id="visi-misi" class="wow bounceInUp w-[100%] md:w-[85%] lg:w-[80%] mx-auto" >
         <div class="container text-black dark:text-white grid mx-auto text-center ">
             <h1 class="text-2xl font-bold ">VISI & MISI</h1>
@@ -90,6 +91,7 @@
             </div>
         </div>
     </section>
+    <!-- Artikel -->
     <section class=" w-[100%] md:w-[85%] lg:w-[80%] mx-auto ">
         <div class="container grid mx-auto text-center ">
             <h1 class="text-2xl text-black dark:text-white font-bold ">ARTIKEL</h1>
@@ -124,6 +126,7 @@
             <a class="decoration-none bg-blue-500 w-40 text-center text-white p-1 rounded-lg hover:shadow-md hover:shadow-white" href="?page=artikel">Selengkapnya</a>
         </div>
     </section>
+    <!-- Galeri -->
     <section class="w-[100%] md:w-[85%] lg:w-[80%] mx-auto">
         <div class="container grid mx-auto text-center">
             <h1 class="text-2xl text-black dark:text-white font-bold ">GALERI</h1>
@@ -166,6 +169,7 @@
             </div>
         </div>
     </section>
+    <!-- Summary -->
     <section class="lapor w-[100%] md:w-[85%] lg:w-[80%] mx-auto">
         <div class=" container bg-gray-700 rounded-lg grid mx-auto w-[90%] md:w-[85%] lg:w-[80%] px-4 py-16 md:grid-cols-8 lg:grid-cols-12 gap-3">
             <!-- <div class="hidden lg:inline-block"></div> -->
@@ -223,6 +227,7 @@
             <p></p>
         </div>
     </section>
+    <!-- Perangkat Desa -->
     <section class="  pb-20 w-[100%] md:w-[85%] lg:w-[80%] mx-auto">
         <div class="container grid text-center">
             <h1 class="text-2xl text-black dark:text-white font-bold mx-auto ">PERANGKAT DESA</h1>
@@ -286,7 +291,7 @@
             </div>
         </div>
     </section>
-
+    <!-- Footer -->
     <footer class=" bg-gray-800 py-8 mx-auto">
         <div class=" mx-auto px-4 w-[100%] md:w-[85%] lg:w-[80%]">
             <div class="flex flex-wrap text-left lg:text-left">

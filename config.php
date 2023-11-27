@@ -1,3 +1,6 @@
+<!-- JANGAN DIOTAK ATIK -->
+<!-- MENGHUBUNGKAN KE DATABASE DAN MENYIMPAMN SESI -->
+
 <?php
 $servername = "localhost";
 $username = "root";
