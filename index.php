@@ -5,28 +5,28 @@ $userInfo = @$_SESSION['id_user'];
 $q_data_user_login=mysqli_query($conn, "SELECT * FROM user WHERE id_user='$userInfo'");
 $data_user_login=mysqli_fetch_array($q_data_user_login);
 
-if(isset($_POST["submit"])){
-    $email = $_POST["email"];
-    $password = md5($_POST["password"]);
-    $result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
-    $row = mysqli_fetch_assoc($result);
-    if(mysqli_num_rows($result) > 0){
-        if($password == $row['password']){
-            if ($row['role']=='admin') {
-                $_SESSION['id_user_admin']=$row['id_user'];
-                $_SESSION['login_admin']='login';
-                header('Location: dashboard/admin/index.php');
-                exit();
-            }else{
-                $_SESSION['id_user']=$row['id_user'];
-                $_SESSION['login']='login';
-                header ('Location: index.php');
-            } 
-        }
-        else{
-        }
-    }
-    }
+// if(isset($_POST["submit"])){
+//     $email = $_POST["email"];
+//     $password = md5($_POST["password"]);
+//     $result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+//     $row = mysqli_fetch_assoc($result);
+//     if(mysqli_num_rows($result) > 0){
+//         if($password == $row['password']){
+//             if ($row['role']=='admin') {
+//                 $_SESSION['id_user_admin']=$row['id_user'];
+//                 $_SESSION['login_admin']='login';
+//                 header('Location: dashboard/admin/index.php');
+//                 exit();
+//             }else{
+//                 $_SESSION['id_user']=$row['id_user'];
+//                 $_SESSION['login']='login';
+//                 header ('Location: index.php');
+//             } 
+//         }
+//         else{
+//         }
+//     }
+//     }
 
 ?>
 
@@ -48,6 +48,9 @@ if(isset($_POST["submit"])){
     <title>SekNdes</title>
     <link rel="stylesheet" href="main.css">
     <link rel="icon" type="image/x-icon" href="asset/pemerintah/gambar3.jpeg">
+    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> -->
+    <link rel="stylesheet" href="css/animate.css">
 </head>
 
 <body chrome-hide-address-bar class="font-[Poppins] bg-white">
@@ -79,7 +82,7 @@ if(isset($_POST["submit"])){
                     </li>
                 </ul>
             </div>
-            <div class="flex items-center gap-6">
+            <div class="flex items-center gap-6" >
                 <?php if(!empty($userInfo)){ ?>
                     <div class="user-info">
                         <button id="logoutBtn" class="bg-[#a6c1ee] text-white px-2 py-1 lg:px-5 lg:py-2 rounded-lg bg-blue-500 hover:bg-blue-300 active:border-none">
@@ -112,7 +115,7 @@ if(isset($_POST["submit"])){
 
     </header>
 
-    <div class="body-content bg-gray-900 top-20">
+    <div class="body-content bg-white dark:bg-gray-900  dark:text-white top-20">
             <?php
                 $page = isset($_GET['page']) ? $_GET['page'] : 'beranda';
                 switch ($page) {
@@ -143,6 +146,11 @@ if(isset($_POST["submit"])){
                 }
             ?>
         </div>
+        <script src="js/wow.min.js"></script>
+        <script>
+        new WOW().init();
+        </script>
+
     <script>
         const navLinks = document.querySelector('.nav-links')
         function onToggleMenu(e){

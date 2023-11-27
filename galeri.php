@@ -2,9 +2,9 @@
 <html lang="en">
 
 <body>
-<section class="bg-gray-900 text-white pt-5 w-[100%] md:w-[85%] lg:w-[80%] mx-auto ">
+<section class="bg-white dark:bg-gray-900 pt-5 w-[100%] md:w-[85%] lg:w-[80%] mx-auto ">
         <div class="container grid mx-auto text-center ">
-            <h1 class="text-2xl font-bold ">GALERI</h1>
+            <h1 class="text-2xl text-black dark:text-white font-bold ">GALERI</h1>
         </div>
         <div class="container grid text-white mx-auto px-4 py-16 w-[90%] md:w-[85%] lg:w-[80%] md:grid-cols-8 lg:grid-cols-12 gap-8">
             <div class="card-galeri p-2 bg-gray-700 md:col-span-4 lg:col-span-4 rounded-lg">
