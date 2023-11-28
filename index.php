@@ -44,6 +44,8 @@ $data_user_login=mysqli_fetch_array($q_data_user_login);
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="https://cdn.tailwindcss.com/3.3.2"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
     <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="css/animate.css">
@@ -117,6 +119,7 @@ $data_user_login=mysqli_fetch_array($q_data_user_login);
                     </div>
                 </div>
             </div>
+            
 
     </header>
 
@@ -124,7 +127,7 @@ $data_user_login=mysqli_fetch_array($q_data_user_login);
     <!-- Include Methode -->
     <div class="body-content bg-white dark:bg-gray-900 z-1 dark:text-white top-20">
             <?php
-                $page = isset($_GET['page']) ? $_GET['page'] : 'beranda';
+                $page = isset($_GET['page']) ? $_GET['page'] : 'beranda'; // Kondisi default dimana akan memuat halaman beranda
                 switch ($page) {
                     case 'artikel': //jika klik link ke "?page=artikel"
                     include 'artikel.php'; //muat halaman artikel.php
@@ -134,7 +137,7 @@ $data_user_login=mysqli_fetch_array($q_data_user_login);
                     break;
                     case 'pemerintahan':
                     include 'pemerintahan.php';
-                    break;
+                    break; 
                     case 'informasi':
                     include 'informasi.php';
                     break;
@@ -157,7 +160,5 @@ $data_user_login=mysqli_fetch_array($q_data_user_login);
         <script>
             AOS.init();
         </script>
-
-</body>
-
+    </body>
 </html>

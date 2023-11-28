@@ -1,12 +1,16 @@
-documentasi	judul	deskripsi	
-
 
 <?php
 if (isset($_GET['page']) && $_GET['page'] == 'tambah_galeri') {
     include 'page/tambah_galeri.php';
 } else {
     ?>
-    <h1>Ini halaman Artikel</h1>
+    <header class="bg-gray-900 w-[100%] sticky left-0 top-0">
+        <nav class="h-16 w-[100%] flex mx-auto " >
+            <div class="place-self-center p-5">
+                <h1 class="text-white font-bold">Galeri</h1>
+            </div>
+        </nav>
+    </header>
     <a href="?page=tambah_galeri">Tambah</a>
     <?php
     $sql = "SELECT * FROM galeri ORDER BY id_doc";

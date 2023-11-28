@@ -12,7 +12,13 @@ if (isset($_GET['page']) && $_GET['page'] == 'edit_artikel') {
     <title>Document</title>
 </head>
 <body>
-    <h1>Ini halaman Artikel</h1>
+    <header class="bg-gray-900 w-[100%] sticky left-0 top-0">
+        <nav class="h-16 w-[100%] flex mx-auto " >
+            <div class="place-self-center p-5">
+                <h1 class="text-white font-bold">Artikel</h1>
+            </div>
+        </nav>
+    </header>
     <a href="?page=edit_artikel">Tambah</a>
     <?php
 

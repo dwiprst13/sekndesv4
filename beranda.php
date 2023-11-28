@@ -151,7 +151,7 @@
         </div>
     </section>
     <section class=" pb-20 w-[100%] md:w-[85%] lg:w-[80%] mx-auto">
-        <div class="container grid mx-auto text-center  w-[80%]">
+        <div class="container grid mx-auto text-center w-[80%]">
             <h1 class="text-2xl text-black dark:text-white font-bold mx-auto ">LOKASI</h1>
         </div>
         <div class="container grid mx-auto px-4 py-16 w-[90%] md:w-[85%] lg:w-[80%] md:grid-cols-8 lg:grid-cols-12 gap-8">
@@ -288,6 +288,44 @@
                     <h2 class="text-lg font-semibold">Alwan Rofail</h2>
                     <p class="">Kaki Kiri Desa</p>
                 </div>
+            </div>
+        </div>
+    </section>
+    <!-- Keuangan -->
+    <section class="  pb-20 w-[100%] md:w-[85%] lg:w-[80%] mx-auto">
+        <div class="container gap-5 grid w-[85%] mx-auto lg:grid-cols-5">
+            <div class="flex text-center lg:col-span-2 bg-blue-500 w-[100%] h-[100%] rounded-lg">
+                <h3 class="place-self-center w-full">Keuangan Desa</h3>
+            </div>
+            <div class="lg:col-span-3 ">
+                <div class="pb-5">
+                    <div class="flex justify-between pb-3">
+                        <p>Pendapatan</p>
+                        <p>98/100</p>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-green-500 h-2.5 rounded-full" style="width: 98%"></div>
+                    </div>
+                </div>
+                <div class="pb-5">
+                    <div class="flex justify-between pb-3">
+                        <p>Pengeluaran</p>
+                        <p>90/100</p>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-green-500 h-2.5 rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="pb-5">
+                    <div class="flex justify-between pb-3">
+                        <p>Sisa</p>
+                        <p>10/100</p>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-green-500 h-2.5 rounded-full" style="width: 10%"></div>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </section>
