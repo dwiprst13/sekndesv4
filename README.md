@@ -7,6 +7,9 @@
 5. Copy folder tersebut ke C:xampp/htdocs
 6. Buka xampp dan nyalakan apache dan mysql
 7. Klik Admin di mysql yang akan masuk ke localhost/phpmyadmin
-8. Import sekndes_db.sql dari phpmyadmin
-9. Untuk menjalankan webnya ketik di browser localhost/sekndess/index.php
-10. Done!!!!
+8. Buat database dengan nama sekndess_db
+9. Import sekndes_db.sql dari phpmyadmin
+10. Untuk menjalankan webnya ketik di browser localhost/sekndess/index.php
+11. Done!!!!
+
+Untuk mengubah ubah tampilan baca dokumentasi di tailwind.com
