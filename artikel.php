@@ -1,13 +1,7 @@
 <?php 
 $artikel = "SELECT * FROM artikel ORDER BY id_artikel DESC LIMIT 3";
-$queryArtikel = mysqli_query($conn, $artikel);
-
+$queryArtikel = mysqli_query($conn, "SELECT * FROM artikel WHERE status = 'publik'");
 ?>
-
-<body>
-        
-</body>
-</html>
 
 <body chrome-hide-address-bar class="min-h-[100%]">
     <section class="bg-white dark:bg-gray-900 pt-5 w-[100%] md:w-[85%] lg:w-[80%] mx-auto ">

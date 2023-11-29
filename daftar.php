@@ -4,24 +4,22 @@ if(!empty($_SESSION["id"])){
 header("Location: index.php");
 }
 
-// Jika submit diklik maka akan melakukan aksi
 if(isset($_POST["submit"])){
-$name = $_POST["name"]; //menyimpan value dari form "name" ke variabel name
+$name = $_POST["name"]; 
 $email = $_POST["email"];
 $phone = $_POST["phone"];
 $nik = $_POST["nik"];
 $pedukuhan = $_POST["pedukuhan"];
-$password = md5($_POST["password"]); //md5 berfungsi untuk enkripsi password(simple encryption)
+$password = md5($_POST["password"]);
 $confirmpassword = $_POST["confirmpassword"];
 
-$duplicate = mysqli_query($conn, "SELECT * FROM user WHERE nik = '$nik' OR email = '$email'"); //Memastikan data masukan apakah ada di database
+$duplicate = mysqli_query($conn, "SELECT * FROM user WHERE nik = '$nik' OR email = '$email'"); 
 if(mysqli_num_rows($duplicate) > 0){
     echo
     "<script> showPopup('Email Sudah Digunakan'); </script>";
 }
 else{
     if($password == md5($confirmpassword)){
-        // Memasukan semua nilai variabel kedalam tabel database
         $query = "INSERT INTO user (name, email, password, phone, nik, pedukuhan, role) VALUES ('$name','$email', '$password','$phone', '$nik','$pedukuhan', 'user')";
 
         mysqli_query($conn, $query);

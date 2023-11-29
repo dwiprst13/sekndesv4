@@ -1,19 +1,15 @@
 
 <?php
-    // Menentukan button di bagian mana yang di klik untuk melakukan aksi
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Mengklik tombol kirim keluhan 
         if (isset($_POST['kirim_keluhan'])){
             $_SESSION['judul'] = $_POST["judul"];
-            $_SESSION['keluhan'] = $_POST["keluhan"]; // Menyimpan sesi keluhan & judul untuk dikirim ke lapor.php
+            $_SESSION['keluhan'] = $_POST["keluhan"];
             header("Location: ?page=lapor");
             exit();
-        } 
-        // Mengklik tombol login
-        elseif(isset($_POST["masuk"])){
+        } elseif(isset($_POST["masuk"])){
             $email = $_POST["email"];
             $password = md5($_POST["password"]);
-            $result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'"); //Memanggil data user dari db untuk sesi aktif
+            $result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
             $row = mysqli_fetch_assoc($result);
             if(mysqli_num_rows($result) > 0){
                 if($password == $row['password']){
@@ -31,12 +27,11 @@
                 else{
                 }
             }
-            }
-        } 
+        }
+    } 
 ?>
 
 <head>
-    
     <style>
         .hide-scroll-bar {
             -ms-overflow-style: none;
@@ -217,7 +212,6 @@
                         </div>
                     </form>
                 <?php } ?>
-
             </div>
         </div>
     </section>
