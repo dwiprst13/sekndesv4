@@ -1,3 +1,9 @@
+
+<?php
+if (isset($_GET['page']) && $_GET['page'] == 'edit_galeri') {
+    include 'page/edit_galeri.php';
+} else {
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,5 +19,16 @@
             </div>
         </nav>
     </header>
+    <a href="?page=tambah_galeri">Tambah</a>
+
+
+    <script>
+        function editUser() {
+            window.location.href = "?page=edit_user&id_artikel=<?= $row['id_artikel'] ?>";
+        }
+    </script>
 </body>
 </html>
+<?php
+}
+?>

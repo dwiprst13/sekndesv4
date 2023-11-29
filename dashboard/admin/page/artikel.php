@@ -1,5 +1,8 @@
 
 <?php
+$artikel = "SELECT * FROM artikel ORDER BY id_artikel";
+$queryArtikel = mysqli_query($conn, $artikel);
+
 if (isset($_GET['page']) && $_GET['page'] == 'edit_artikel') {
     include 'page/tambah_artikel.php';
 } else {
@@ -19,31 +22,23 @@ if (isset($_GET['page']) && $_GET['page'] == 'edit_artikel') {
             </div>
         </nav>
     </header>
-    <a href="?page=edit_artikel">Tambah</a>
-    <?php
-
-    $sql = "SELECT * FROM artikel ORDER BY date";
-    $result = mysqli_query($conn, $sql);
-
-    while ($row = mysqli_fetch_assoc($result)) {
-        ?>
-        <div class="card">
-            <img src="<?= $row['gambar'] ?>" alt="Gambar Artikel" height="250px" width="300px">
-            <div class="card-body">
-                <p class="card-text">Judul: <b><?= $row['judul'] ?></b></p>
-                <p class="card-text">Isi: <?= $row['content'] ?></p>
-                <p class="card-text">Tanggal Terbit: <?= $row['date'] ?></p>
-                <form action="" method="get">
-                    <input type="hidden" name="page" value="edit_artikel">
-                    <input type="hidden" name="id_artikel" value="<?= $row['id_artikel'] ?>">
-                    <button type="submit">Edit</button>
-                </form>
-            </div>
+    <a href="?page=tambah_artikel">Tambah</a>
+    <section class="pt-5 w-[100%] mx-auto ">
+        <div class="container flex flex-nowrap w-[90%] gap-5 columns-3 mx-auto grid px-4 py-16 lg:grid-cols-12">
+            <?php
+                while ($row_artikel = mysqli_fetch_assoc($queryArtikel)) {
+                $path_baru = $row_artikel['gambar'];
+            ?>
+                <a href="?page=detail_artikel&id_artikel=<?= $row_artikel['id_artikel'] ?>" class="card-galeri justify-center p-2 bg-gray-700 md:col-span-3 lg:col-span-3 rounded-lg">
+                    <h1 class="text-center pt-3 text-lg"><b><?= $row_artikel['judul'] ?></b></h1>
+                    <img src="<?= $path_baru ?>" alt="" class="h-60 pt-3 w-[100%]">
+                    <p class="text-justify text-sm pt-3 line-clamp-3"><?= $row_artikel['content'] ?></p>
+                </a>
+            <?php
+                }
+            ?>
         </div>
-        <br>
-        <?php
-    }
-    ?>
+    </section>
 
     <script>
         function editUser() {

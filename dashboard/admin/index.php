@@ -88,6 +88,9 @@ if($_SESSION['login_admin']=='login'){
                 case 'edit_artikel':
                     include 'ekstra/edit_artikel.php';
                     break;
+                case 'detail_artikel':
+                    include 'ekstra/detail_artikel.php';
+                    break;
                 // ===================> Include page user <===================
                 case 'user':
                     include 'page/user.php';

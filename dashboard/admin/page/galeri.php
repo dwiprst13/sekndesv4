@@ -1,7 +1,7 @@
 
 <?php
-if (isset($_GET['page']) && $_GET['page'] == 'tambah_galeri') {
-    include 'page/tambah_galeri.php';
+if (isset($_GET['page']) && $_GET['page'] == 'edit_galeri') {
+    include 'page/edit_galeri.php';
 } else {
     ?>
     <header class="bg-gray-900 w-[100%] sticky left-0 top-0">
@@ -12,17 +12,17 @@ if (isset($_GET['page']) && $_GET['page'] == 'tambah_galeri') {
         </nav>
     </header>
     <a href="?page=tambah_galeri">Tambah</a>
+    <div class="flex grid grid-cols-12 gap-2"></div>
     <?php
     $sql = "SELECT * FROM galeri ORDER BY id_doc";
     $result = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
         ?>
-        <div class="card">
-            <img src="<?= $row['documentasi'] ?>" alt="Gambar Galeri" height="250px" width="300px">
+        <div class="card col-span-3 float-right">
+            <img src="<?= $row['documentasi'] ?>" alt="Gambar Galeri" class="w-[100%]">
             <div class="card-body">
                 <p class="card-text">Judul: <b><?= $row['judul'] ?></b></p>
                 <p class="card-text">Deskripsi: <?= $row['deskripsi'] ?></p>
-                <p class="card-text">Tanggal Terbit: <?= $row['date'] ?></p>
                 <form action="" method="get">
                     <input type="hidden" name="page" value="edit_galeri">
                     <input type="hidden" name="id_doc" value="<?= $row['id_doc'] ?>">
