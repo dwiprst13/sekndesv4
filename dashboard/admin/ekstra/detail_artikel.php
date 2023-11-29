@@ -3,7 +3,7 @@ function updateStatus($conn, $id_artikel, $status) {
     $query = "UPDATE artikel SET status='$status' WHERE id_artikel='$id_artikel'";
     $update_status = mysqli_query($conn, $query);
     if ($update_status) {
-        header('Location: ?page=artikel');
+        header("Location: ?page=detail_artikel&id_artikel=$id_artikel");
     } else {
         $alert = "<div class='alert alert-danger'>Error updating status</div>";
     }

@@ -51,25 +51,21 @@ if (isset($_GET['page']) && $_GET['page'] == 'edit_artikel') {
     <section class="w-[100%] mx-auto ">
         <div class="container flex flex-nowrap w-[90%] gap-5 columns-3 mx-auto grid px-4 py-16 lg:grid-cols-12">
             <?php
-                while ($row_artikel = mysqli_fetch_assoc($queryArtikel)) {
+            while ($row_artikel = mysqli_fetch_assoc($queryArtikel)) {
                 $path_baru = $row_artikel['gambar'];
+                $status = $row_artikel['status'];
+                $card_class = ($status === 'publish') ? 'bg-white' : 'bg-orange-100';
             ?>
-                <a href="?page=detail_artikel&id_artikel=<?= $row_artikel['id_artikel'] ?>" class="card-galeri justify-center p-2 bg-gray-700 text-white md:col-span-3 lg:col-span-3 rounded-lg">
+                <a href="?page=detail_artikel&id_artikel=<?= $row_artikel['id_artikel'] ?>" class="card-galeri justify-center p-2 text-gray-900 md:col-span-3 lg:col-span-3 rounded-lg <?= $card_class ?>">
                     <h1 class="text-center pt-3 text-lg"><b><?= $row_artikel['judul'] ?></b></h1>
                     <img src="<?= $path_baru ?>" alt="" class="h-60 pt-3 w-[100%]">
                     <p class="text-justify text-sm pt-3 line-clamp-3"><?= $row_artikel['content'] ?></p>
                 </a>
             <?php
-                }
+            }
             ?>
         </div>
     </section>
-
-    <script>
-        function editUser() {
-            window.location.href = "?page=edit_user&id_artikel=<?= $row['id_artikel'] ?>";
-        }
-    </script>
 </body>
 </html>
 <?php
