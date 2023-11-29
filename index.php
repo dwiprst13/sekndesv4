@@ -60,7 +60,14 @@ $data_user_login=mysqli_fetch_array($q_data_user_login);
                         <a class="text-white hover:text-gray-500" href="?page=galeri">Galeri</a>
                     </li>
                     <li>
-                        <a class="text-white hover:text-gray-500" href="?page=lapor">Lapor</a>
+                    <?php if(!empty($userInfo)){ ?> <!-- Jika Ada -->
+                    <div class="user-info">
+                    <a class="text-white hover:text-gray-500" href="?page=lapor">Lapor</a>
+                    </div>
+                        <?php }
+                        else { ?> <!-- Jika Tidak -->
+                            <a class="text-white hover:text-gray-500" href="login.php">Lapor</a>
+                        <?php } ?>
                     </li>
                 </ul>
             </div>
@@ -135,11 +142,4 @@ $data_user_login=mysqli_fetch_array($q_data_user_login);
         <script>
             AOS.init();
         </script>
-<<<<<<< HEAD
-    </body>
-</html>
-=======
-</body>
 
-</html>
->>>>>>> 6285136a6e1172e934f3a64a27dcaa8ce8469781

@@ -4,6 +4,27 @@ $queryArtikel = mysqli_query($conn, $artikel);
 
 ?>
 
+<body>
+    <?php
+    while ($row_artikel = mysqli_fetch_assoc($queryArtikel)) {
+        $path_relatif = $row_artikel['gambar'];
+        $path_baru = str_replace('../../', '', $path_relatif);
+        ?>
+            <div class="card">
+                <img src="<?= $path_baru ?>" alt="Gambar Artikel" height="250px" width="300px">
+                <div class="card-body">
+                    <p class="card-text">Judul: <b><?= $row_artikel['judul'] ?></b></p>
+                    <p class="card-text">Isi: <?= $row_artikel['content'] ?></p>
+                    <p class="card-text">Tanggal Terbit: <?= $row_artikel['date'] ?></p>
+                </div>
+            </div>
+        <br>
+        <?php
+    }
+    ?>
+</body>
+</html>
+
 <body chrome-hide-address-bar class="min-h-[100%]">
     <section class="bg-white dark:bg-gray-900 pt-5 w-[100%] md:w-[85%] lg:w-[80%] mx-auto ">
         <div class="container grid mx-auto text-center ">

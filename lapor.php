@@ -93,7 +93,7 @@ if(!empty($userInfo)){ ?>
     </body>
 <?php }
 else { 
-    header("Location: login.php");
+    
 } ?>
 
 
