@@ -174,8 +174,7 @@
         <div class=" container bg-gray-700 rounded-lg grid mx-auto w-[90%] md:w-[85%] lg:w-[80%] px-4 py-16 md:grid-cols-8 lg:grid-cols-12 gap-3">
             <!-- <div class="hidden lg:inline-block"></div> -->
             <div class="md:col-span-3 lg:col-span-4 min-h-72 text-center object-center text-white place-self-center">
-                <h2>DESA TERPADU
-                </h2>
+                <h2>DESA TERPADU</h2>
                 <h1 class="text-3xl font-bold">DESA WIJIMULYO</h1>
             </div>
             <div class=" md:col-span-2 lg:col-span-4 min-h-72 text-center text-white place-self-center">

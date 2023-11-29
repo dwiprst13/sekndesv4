@@ -31,7 +31,14 @@ if (isset($_POST["submit"])) {
 }
 ?>
 
-<h1>Edit User</h1>
+<header class="bg-gray-900 w-[100%] sticky left-0 top-0">
+    <nav class="h-16 w-[100%] flex mx-auto " >
+        <div class="place-self-center flex gap-1 p-5">
+            <h1 class="text-white font-bold"><a href="?page=user">User</a> / </h1>
+            <h2 class="text-white"> Edit User</h2>
+        </div>
+    </nav>
+</header>
 <span class="akun-btn">Halo <?php echo $row['name']; ?></span>
 
 <form method="post">

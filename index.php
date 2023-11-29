@@ -96,11 +96,6 @@ $data_user_login=mysqli_fetch_array($q_data_user_login);
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
-            
-
-=======
->>>>>>> 6285136a6e1172e934f3a64a27dcaa8ce8469781
     </header>
 
     <!-- Body -->
