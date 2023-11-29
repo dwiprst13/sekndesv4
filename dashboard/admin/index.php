@@ -73,7 +73,7 @@ if($_SESSION['login_admin']=='login'){
         </ul>
     </div>
     <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-50 min-h-screen transition-all main">
-        <div class=" bg-white items-center shadow-md shadow-black/5 sticky top-0 left-0 z-30">
+        <div class=" bg-gray-200 items-center shadow-md shadow-black/5 sticky top-0 left-0 z-30">
         <?php
             $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
         

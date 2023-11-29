@@ -2,38 +2,35 @@
 if(@$_SESSION['login_admin']=='login'){
 
     if(isset($_POST["submit"])){
-        $name = $_POST["name"];
+        $name = $_POST["name"]; //menyimpan value dari form "name" ke variabel name
         $email = $_POST["email"];
         $phone = $_POST["phone"];
         $nik = $_POST["nik"];
         $pedukuhan = $_POST["pedukuhan"];
-        $password = $_POST["password"];
+        $password = md5($_POST["password"]); //md5 berfungsi untuk enkripsi password(simple encryption)
         $confirmpassword = $_POST["confirmpassword"];
-    
-        $duplicate = mysqli_query($conn, "SELECT * FROM user WHERE nik = '$nik' OR email = '$email'");
+        $role = $_POST["role"];
+        
+        $duplicate = mysqli_query($conn, "SELECT * FROM user WHERE nik = '$nik' OR email = '$email'"); //Memastikan data masukan apakah ada di database
         if(mysqli_num_rows($duplicate) > 0){
-            echo "<script> showPopup('Email Sudah Digunakan'); </script>";
+            echo
+            "<script> showPopup('Email Sudah Digunakan'); </script>";
         }
         else{
-            if(strlen($password) >= 8 && preg_match('/[A-Za-z]/', $password) && preg_match('/[0-9]/', $password)){
+            if($password == md5($confirmpassword)){
+                // Memasukan semua nilai variabel kedalam tabel database
+                $query = "INSERT INTO user (name, email, password, phone, nik, pedukuhan, role) VALUES ('$name','$email', '$password','$phone', '$nik','$pedukuhan', '$role')";
         
-                if($password == $confirmpassword){
-                    $hashed_password = md5($password);
-        
-                    $query = "INSERT INTO user (name, email, password, phone, nik, pedukuhan, role) VALUES ('$name','$email', '$hashed_password','$phone', '$nik','$pedukuhan', 'user')";
-        
-                    mysqli_query($conn, $query);
-                    echo "<script> showPopup('Pendaftaran Sukses'); </script>";
-                }
-                else{
-                    echo "<script> showPopup('Konfirmasi Password Tidak Cocok'); </script>";
-                }
+                mysqli_query($conn, $query);
+                echo
+                "<script> showPopup('Pendaftaran Sukses'); </script>";
             }
             else{
-                echo "<script> showPopup('Password harus memiliki setidaknya 8 karakter dan kombinasi alphanumeric'); </script>";
+                echo
+                "<script> showPopup('Pendaftaran Gagal'); </script>";
             }
         }
-    }
+        }
 }
 ?>
 
@@ -95,15 +92,15 @@ if(@$_SESSION['login_admin']=='login'){
                             </div>
                         </div>
                         <div>
-                            <label for="confirmpassword" class="block text-sm font-medium leading-6  ">Tipe User</label>
+                            <label for="role" class="block text-sm font-medium leading-6 ">Tipe User</label>
                             <div class="mt-2">
-                                <input id="confirmpassword" name="confirmpassword" type="text" autocomplete="off" required class="block w-full rounded-md p-3 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input id="role" name="role" type="text" autocomplete="off" required class="block w-full rounded-md p-3 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="flex justify-center pb-16 mx-auto">
-                    <button type="submit" action="#" name="submit" class="flex text-white  justify-center rounded-md w-[50%] bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Tambah</button>
+                    <button type="submit" action="#" name="submit" class="flex text-white justify-center rounded-md w-[50%] bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Tambah</button>
                 </div>
             </form>
         </div>
