@@ -22,78 +22,58 @@ if($_SESSION['login_admin']=='login'){
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-    <script src="main.js" defer></script>
+    <script src="../assets/js/script.js" defer></script>
     <title>SekNdes</title>
-    <!-- <link rel="stylesheet" href="../assets/css/style.css"> -->
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="icon" type="image/x-icon" href="asset/pemerintah/gambar3.jpeg">
 </head>
 <body>
-<div class="wrapper flex grid grid-cols-12 bg-gray-100">
-    <nav class="sidebar justify-between flex flex-col left-0 top-0 sticky col-span-2 overflow-hidden h-screen bg-blue-500">
-        <div class="justify-center w-[100%] mx-auto p-6">
-            <h1 class="text-center text-3xl font-bold text-white">ADMIN</h1>
-        </div>
-        <ul class="justify-center w-[100%] mx-auto p-6">
-            <li class="decoration-none rounded-lg w-[100%] flex bg-blue-700 my-2 h-12 text-center p-1 hover:bg-blue-900">
-                <a href="index.php" class="w-[100%] place-self-center font-bold text-white ">Dashboard</a>
+<div class="fixed left-0 top-0 w-64 h-full bg-gray-900 p-4 z-50 sidebar-menu transition-transform">
+        <a href="#" class="flex items-center pb-4 border-b border-b-gray-800">
+            <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover">
+            <span class="text-lg font-bold text-white ml-3">Logo</span>
+        </a>
+        <ul class="mt-4">
+            <li class="mb-1 group active">
+                <a href="?page=dashboard" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md">
+                    <i class="ri-home-2-line mr-3 text-lg"></i>
+                    <span class="text-sm">Dashboard</span>
+                </a>
             </li>
-            <li class="decoration-none rounded-lg w-[100%] flex bg-blue-700 my-2 h-12 text-center p-1 hover:bg-blue-900">
-                <a href="?page=user" class="w-[100%] place-self-center font-bold text-white">User</a>
+            <li class="mb-1 group ">
+                <a href="?page=user" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md">
+                    <i class="ri-home-2-line mr-3 text-lg"></i>
+                    <span class="text-sm">User</span>
+                </a>
             </li>
-            <li class="decoration-none rounded-lg w-[100%] flex bg-blue-700 my-2 h-12 text-center p-1 hover:bg-blue-900">
-                <a href="?page=galeri" class="w-[100%] place-self-center font-bold text-white">Galeri</a>
+            <li class="mb-1 group ">
+                <a href="?page=artikel" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md">
+                    <i class="ri-home-2-line mr-3 text-lg"></i>
+                    <span class="text-sm">Artikel</span>
+                </a>
             </li>
-            <li class="decoration-none rounded-lg w-[100%] flex bg-blue-700 my-2 h-12 text-center p-1 hover:bg-blue-900">
-                <a href="?page=artikel" class="w-[100%] place-self-center font-bold text-white">Artikel</a>
+            <li class="mb-1 group ">
+                <a href="?page=galeri" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md">
+                    <i class="ri-home-2-line mr-3 text-lg"></i>
+                    <span class="text-sm">Galeri</span>
+                </a>
             </li>
-            <li class="decoration-none rounded-lg w-[100%] flex bg-blue-700 my-2 h-12 text-center p-1 hover:bg-blue-900">
-                <a href="?page=informasi" class="w-[100%] place-self-center font-bold text-white">Informasi</a>
+            <li class="mb-1 group ">
+                <a href="?page=lapor" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md">
+                    <i class="ri-home-2-line mr-3 text-lg"></i>
+                    <span class="text-sm">Laporan</span>
+                </a>
             </li>
-            <li class="decoration-none rounded-lg w-[100%] flex bg-blue-700 my-2 h-12 text-center p-1 hover:bg-blue-900">
-                <a href="?page=lapor" class="w-[100%] place-self-center font-bold text-white">Lapor</a>
+            <li class="mb-1 group">
+                <a href="?page=informasi" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md">
+                    <i class="ri-settings-2-line mr-3 text-lg"></i>
+                    <span class="text-sm">Informasi</span>
+                </a>
             </li>
         </ul>
-        <?php if(!empty($id_user_login)){ ?>
-        <div class="user-info flex  pb-5">
-            <div class="container-user mx-auto ">
-                <span class="text-white mr-2"><?php echo $data_user_login['name']; ?></span>
-                <button onclick="confirmLogout()" href="../../logout.php" class="bg-red-600 p-2 rounded-lg place-self-center text-white">Logout</button>
-            </div>
-        </div>
-        <?php }
-        else { 
-        } ?>
-    </nav>
-
-        <!-- <div class="sidebar-name">
-            <h2>SekNdes Admin</h2>
-        </div>
-        <ul class="navbar-menu">
-            <li class="nav-item"><a href="index.php" class="beranda-btn">Dashboard</a></li>
-            <li class="nav-item"><a href="?page=user" class="profil-btn">User</a></li>
-            <li class="nav-item"><a href="?page=galeri" class="informasi-btn">Galeri</a></li>
-            <li class="nav-item"><a href="?page=artikel" class="artikel-btn">Artikel</a></li>
-            <li class="nav-item"><a href="?page=informasi" class="galeri-btn">Informasi</a></li>
-            <li class="nav-item"><a href="?page=pemerintahan" class="pemerintahan-btn">Pemerintahan</a></li>
-            <li class="nav-item"><a href="?page=lapor" class="lapor-btn">Lapor</a></li>
-        </ul>
-        <?php if(!empty($id_user_login)){ ?>
-        <div class="user-info">
-            <div class="container-user">
-                <span class="akun-name"><?php echo $data_user_login['name']; ?></span>
-                <button onclick="confirmLogout()" href="../../logout.php" class="logout-btn">Logout</button>
-            </div>
-        </div>
-        <?php }
-        else { 
-        } ?> -->
-    
-    <div class="content col-span-9">
-        <?php
-        }else{
-            header('location:../../login.php');
-        }
-        ?>
+    </div>
+    <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-50 min-h-screen transition-all main">
+        <div class=" bg-gray-200 items-center shadow-md shadow-black/5 sticky top-0 left-0 z-30">
         <?php
             $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
         
@@ -107,6 +87,9 @@ if($_SESSION['login_admin']=='login'){
                     break;
                 case 'edit_artikel':
                     include 'ekstra/edit_artikel.php';
+                    break;
+                case 'detail_artikel':
+                    include 'ekstra/detail_artikel.php';
                     break;
                 // ===================> Include page user <===================
                 case 'user':
@@ -171,6 +154,9 @@ if($_SESSION['login_admin']=='login'){
                     break;
             }
         ?>
+        </div>
+    </main>
+        
     </div>
 </div>
 <script>
@@ -181,6 +167,4 @@ if($_SESSION['login_admin']=='login'){
     }
 </script>
 </body>
-<?php
-
-?>
+<?php } ?>
