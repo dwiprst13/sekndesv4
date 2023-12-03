@@ -2,106 +2,88 @@
 if(@$_SESSION['login_admin']=='login'){
 
     if(isset($_POST["submit"])){
-        $name = $_POST["name"]; //menyimpan value dari form "name" ke variabel name
+        $name = $_POST["name"];
         $email = $_POST["email"];
         $phone = $_POST["phone"];
         $nik = $_POST["nik"];
         $pedukuhan = $_POST["pedukuhan"];
-        $password = md5($_POST["password"]); //md5 berfungsi untuk enkripsi password(simple encryption)
+        $password = $_POST["password"];
         $confirmpassword = $_POST["confirmpassword"];
-        $role = $_POST["role"];
-        
-        $duplicate = mysqli_query($conn, "SELECT * FROM user WHERE nik = '$nik' OR email = '$email'"); //Memastikan data masukan apakah ada di database
+    
+        $duplicate = mysqli_query($conn, "SELECT * FROM user WHERE nik = '$nik' OR email = '$email'");
         if(mysqli_num_rows($duplicate) > 0){
-            echo
-            "<script> showPopup('Email Sudah Digunakan'); </script>";
+            echo "<script> showPopup('Email Sudah Digunakan'); </script>";
         }
         else{
-            if($password == md5($confirmpassword)){
-                // Memasukan semua nilai variabel kedalam tabel database
-                $query = "INSERT INTO user (name, email, password, phone, nik, pedukuhan, role) VALUES ('$name','$email', '$password','$phone', '$nik','$pedukuhan', '$role')";
+            if(strlen($password) >= 8 && preg_match('/[A-Za-z]/', $password) && preg_match('/[0-9]/', $password)){
         
-                mysqli_query($conn, $query);
-                echo
-                "<script> showPopup('Pendaftaran Sukses'); </script>";
+                if($password == $confirmpassword){
+                    $hashed_password = md5($password);
+        
+                    $query = "INSERT INTO user (name, email, password, phone, nik, pedukuhan, role) VALUES ('$name','$email', '$hashed_password','$phone', '$nik','$pedukuhan', 'user')";
+        
+                    mysqli_query($conn, $query);
+                    echo "<script> showPopup('Pendaftaran Sukses'); </script>";
+                }
+                else{
+                    echo "<script> showPopup('Konfirmasi Password Tidak Cocok'); </script>";
+                }
             }
             else{
-                echo
-                "<script> showPopup('Pendaftaran Gagal'); </script>";
+                echo "<script> showPopup('Password harus memiliki setidaknya 8 karakter dan kombinasi alphanumeric'); </script>";
             }
         }
-        }
+    }
 }
 ?>
 
-<!DOCTYPE html><header class="bg-gray-900 w-[100%] sticky left-0 top-0">
-    <nav class="h-16 w-[100%] flex mx-auto " >
-        <div class="place-self-center flex gap-1 p-5">
-            <h1 class="text-white font-bold"><a href="?page=user">User</a> /</h1>
-            <h2 class="text-white"> Tambah User</h2>
+<div class="tambah-user-container">
+    <h1>User</h1>
+    <h2>Tambah User Baru</h2>
+    <button class="tambah-user-back-btn"><a href="?page=user">Kembali</a></button>
+    <form class="tambah-user-form" action="" method="post" autocomplete="off">
+        <div class="txt_field">
+            <label for="name">Nama</label>
+            <span></span>
+            <input type="text" name="name" id="name" required />
         </div>
-    </nav>
-</header>
-    <div class="flex flex-col justify-center px-6 py-6 min-h-full lg:px-8">
-        <div class="mt-10 sm:mx-auto sm:w-full ">
-            <form class="space-y-6 " action="#" method="POST">
-                <div class=" grid grid-cols-8 ">
-                    <div class="space-y-6 col-span-4 p-5">
-                        <div class=" ">
-                            <label for="name" class="block text-sm font-medium leading-6  ">Nama</label>
-                            <div class="mt-2">
-                                <input id="name" name="name" type="text" autocomplete="off" required class="block w-full rounded-md  p-3 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
-                        </div>
-                        <div class=" ">
-                            <label for="email" class="block text-sm font-medium leading-6  ">Email</label>
-                            <div class="mt-2">
-                                <input id="email" name="email" type="email" autocomplete="off" required class="block w-full rounded-md  p-3 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
-                        </div>
-                        <div>
-                            <label for="phone" class="block text-sm font-medium leading-6  ">Nomor Telepon</label>
-                            <div class="mt-2">
-                                <input id="phone" name="phone" type="phone" autocomplete="off" required class="block w-full rounded-md  p-3 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
-                        </div>
-                        <div>
-                            <label for="nik" class="block text-sm font-medium leading-6  ">NIK</label>
-                            <div class="mt-2">
-                                <input id="nik" name="nik" type="text" autocomplete="off" required class="block w-full rounded-md  p-3 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="space-y-6 col-span-4 p-5">
-                        <div>
-                            <label for="pedukuhan" class="block text-sm font-medium leading-6  ">Pedukuhan</label>
-                            <div class="mt-2">
-                                <input id="pedukuhan" name="pedukuhan" type="text" autocomplete="off" required class="block w-full rounded-md  p-3 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
-                        </div>
-                        <div>
-                            <label for="password" class="block text-sm font-medium leading-6  ">Kata Sandi</label>
-                            <div class="mt-2">
-                                <input id="password" name="password" type="text" autocomplete="off" required class="block w-full rounded-md  p-3 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
-                        </div>
-                        <div>
-                            <label for="confirmpassword" class="block text-sm font-medium leading-6  ">Ulangi Kata Sandi</label>
-                            <div class="mt-2">
-                                <input id="confirmpassword" name="confirmpassword" type="text" autocomplete="off" required class="block w-full rounded-md p-3 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
-                        </div>
-                        <div>
-                            <label for="role" class="block text-sm font-medium leading-6 ">Tipe User</label>
-                            <div class="mt-2">
-                                <input id="role" name="role" type="text" autocomplete="off" required class="block w-full rounded-md p-3 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex justify-center pb-16 mx-auto">
-                    <button type="submit" action="#" name="submit" class="flex text-white justify-center rounded-md w-[50%] bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Tambah</button>
-                </div>
-            </form>
+        <div class="txt_field">
+            <label for="email">Email</label>
+            <span></span>
+            <input type="email" name="email" id="email" required />
+        </div>
+        <div class="txt_field">
+            <label for="phone">Nomor Telepon</label>
+            <span></span>
+            <input type="tel" name="phone" id="phone" required />
+        </div>
+        <div class="txt_field">
+            <label for="nik">NIK</label>
+            <span></span>
+            <input type="text" name="nik" id="nik" required />
+        </div>
+        <div class="txt_field">
+            <label for="pedukuhan">Pedukuhan</label>
+            <span></span>
+            <input type="text" name="pedukuhan" id="pedukuhan" required />
+        </div>
+        <div class="txt_field">
+            <label for="password">Kata Sandi</label>
+            <span></span>
+            <input type="password" name="password" id="password" required />
+        </div>
+        <div class="txt_field">
+            <label for="confirmpassword">Ulangi Kata Sandi</label>
+            <span></span>
+            <input type="password" name="confirmpassword" id="confirmpassword" required />
+        </div>
+        <button type="submit" name="submit">Tambahkan</button>
+        <div class="signup_link">
+        
         </div>
     </div>
+    </form> 
+</div>
+<?
+
+?>

@@ -4,22 +4,24 @@ if(!empty($_SESSION["id"])){
 header("Location: index.php");
 }
 
+// Jika submit diklik maka akan melakukan aksi
 if(isset($_POST["submit"])){
-$name = $_POST["name"]; 
+$name = $_POST["name"]; //menyimpan value dari form "name" ke variabel name
 $email = $_POST["email"];
 $phone = $_POST["phone"];
 $nik = $_POST["nik"];
 $pedukuhan = $_POST["pedukuhan"];
-$password = md5($_POST["password"]);
+$password = md5($_POST["password"]); //md5 berfungsi untuk enkripsi password(simple encryption)
 $confirmpassword = $_POST["confirmpassword"];
 
-$duplicate = mysqli_query($conn, "SELECT * FROM user WHERE nik = '$nik' OR email = '$email'"); 
+$duplicate = mysqli_query($conn, "SELECT * FROM user WHERE nik = '$nik' OR email = '$email'"); //Memastikan data masukan apakah ada di database
 if(mysqli_num_rows($duplicate) > 0){
     echo
     "<script> showPopup('Email Sudah Digunakan'); </script>";
 }
 else{
     if($password == md5($confirmpassword)){
+        // Memasukan semua nilai variabel kedalam tabel database
         $query = "INSERT INTO user (name, email, password, phone, nik, pedukuhan, role) VALUES ('$name','$email', '$password','$phone', '$nik','$pedukuhan', 'user')";
 
         mysqli_query($conn, $query);
@@ -90,20 +92,20 @@ else{
                 </div>
             </div>
             <div>
-                <label for="confirmpassword" class="block text-sm font-medium leading-6 text-white">Ulangi Kata Sandi</label>
+                <label for="repassword" class="block text-sm font-medium leading-6 text-white">Ulangi Kata Sandi</label>
                 <div class="mt-2">
-                    <input id="confirmpassword" name="confirmpassword" type="text" autocomplete="off" required class="block w-full rounded-md p-3 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    <input id="repassword" name="repassword" type="text" autocomplete="off" required class="block w-full rounded-md p-3 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
             </div>
 
             <div>
-                <button type="submit" action="#" name="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Daftar</button>
+                <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Daftar</button>
             </div>
         </form>
     
         <p class="mt-10 text-center text-sm text-gray-500">
             Sudah punya akun?
-            <a href="login.php" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Masuk Sekarang</a>
+            <a href="login.html" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Masuk Sekarang</a>
         </p>
         </div>
     </div>

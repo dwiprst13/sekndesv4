@@ -22,7 +22,6 @@ if (isset($_POST["submit"])) {
     if ($conn->query($sql) === TRUE) {
         unset($_SESSION['judul']); //Membersihkan sesi judul
         unset($_SESSION['keluhan']);
-        echo "BERHASIL UPLOAD";
         header("Location: ?page=lapor");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
@@ -93,7 +92,7 @@ if(!empty($userInfo)){ ?>
     </body>
 <?php }
 else { 
-    
+    header("Location: login.php");
 } ?>
 
 

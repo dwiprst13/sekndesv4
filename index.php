@@ -5,6 +5,49 @@ $userInfo = @$_SESSION['id_user'];
 $q_data_user_login=mysqli_query($conn, "SELECT * FROM user WHERE id_user='$userInfo'");
 $data_user_login=mysqli_fetch_array($q_data_user_login);
 
+function tampilkanNavbar($userInfo, $data_user_login) {
+    if (!empty($userInfo)) { ?> <!-- Jika Ada -->
+        <div class="user-info">
+            <button id="logoutBtn" class="bg-[#a6c1ee] text-white px-2 py-1 lg:px-5 lg:py-2 rounded-lg bg-blue-500 hover:bg-blue-300 active:border-none">
+            <?php 
+                // Menampilkan nama user ke dalam button
+                $fullName = $data_user_login['name'];
+                $parts = explode(' ', $fullName);
+                $firstName = $parts[0];
+                echo '<span class="akun-btn">' . $firstName . '</span>';
+            ?>
+            </button>
+        </div>
+    <?php } else { ?> <!-- Jika Tidak -->
+        <form action="login.php">
+            <button type="submit" class="bg-[#a6c1ee] text-white px-2 py-1 lg:px-5 lg:py-2 rounded-lg bg-blue-500 hover:bg-blue-300">Masuk</button>
+        </form>
+    <?php }
+}
+
+// if(isset($_POST["submit"])){
+//     $email = $_POST["email"];
+//     $password = md5($_POST["password"]);
+//     $result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+//     $row = mysqli_fetch_assoc($result);
+//     if(mysqli_num_rows($result) > 0){
+//         if($password == $row['password']){
+//             if ($row['role']=='admin') {
+//                 $_SESSION['id_user_admin']=$row['id_user'];
+//                 $_SESSION['login_admin']='login';
+//                 header('Location: dashboard/admin/index.php');
+//                 exit();
+//             }else{
+//                 $_SESSION['id_user']=$row['id_user'];
+//                 $_SESSION['login']='login';
+//                 header ('Location: index.php');
+//             } 
+//         }
+//         else{
+//         }
+//     }
+//     }
+
 ?>
 
 <!doctype html>
@@ -21,8 +64,6 @@ $data_user_login=mysqli_fetch_array($q_data_user_login);
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-    <script src="https://cdn.tailwindcss.com/3.3.2"></script>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
     <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="css/animate.css">
@@ -60,37 +101,14 @@ $data_user_login=mysqli_fetch_array($q_data_user_login);
                         <a class="text-white hover:text-gray-500" href="?page=galeri">Galeri</a>
                     </li>
                     <li>
-                    <?php if(!empty($userInfo)){ ?> <!-- Jika Ada -->
-                    <div class="user-info">
-                    <a class="text-white hover:text-gray-500" href="?page=lapor">Lapor</a>
-                    </div>
-                        <?php }
-                        else { ?> <!-- Jika Tidak -->
-                            <a class="text-white hover:text-gray-500" href="login.php">Lapor</a>
-                        <?php } ?>
+                        <a class="text-white hover:text-gray-500" href="?page=lapor">Lapor</a>
                     </li>
                 </ul>
             </div>
             <div class="flex items-center gap-6" >
                 <!-- Memastikan ada aktivitas login atau tidak -->
-                <?php if(!empty($userInfo)){ ?> <!-- Jika Ada -->
-                    <div class="user-info">
-                        <button id="logoutBtn" class="bg-[#a6c1ee] text-white px-2 py-1 lg:px-5 lg:py-2 rounded-lg bg-blue-500 hover:bg-blue-300 active:border-none">
-                        <?php 
-                            // Menampilkan nama user ke dalam button
-                            $fullName = $data_user_login['name'];
-                            $parts = explode(' ', $fullName);
-                            $firstName = $parts[0];
-                            echo '<span class="akun-btn">' . $firstName . '</span>';
-                        ?>
-                        </button>
-                    </div>
-                <?php }
-                else { ?> <!-- Jika Tidak -->
-                    <button class="bg-[#a6c1ee] text-white px-2 py-1 lg:px-5 lg:py-2 rounded-lg bg-blue-500 hover:bg-blue-300"><a href="login.php">Masuk</a></button>
-                <?php } ?>
-                    <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-
-                xl  text-white cursor-pointer lg:hidden"></ion-icon>
+                <?php tampilkanNavbar($userInfo, $data_user_login); ?>
+                    <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-xl  text-white cursor-pointer lg:hidden"></ion-icon>
             </div>
 
             <!-- MODAL KONFIRMASI LOGOUT -->
@@ -103,13 +121,14 @@ $data_user_login=mysqli_fetch_array($q_data_user_login);
                     </div>
                 </div>
             </div>
+
     </header>
 
     <!-- Body -->
     <!-- Include Methode -->
     <div class="body-content bg-white dark:bg-gray-900 z-1 dark:text-white top-20">
             <?php
-                $page = isset($_GET['page']) ? $_GET['page'] : 'beranda'; // Kondisi default dimana akan memuat halaman beranda
+                $page = isset($_GET['page']) ? $_GET['page'] : 'beranda';
                 switch ($page) {
                     case 'artikel': //jika klik link ke "?page=artikel"
                     include 'artikel.php'; //muat halaman artikel.php
@@ -119,7 +138,7 @@ $data_user_login=mysqli_fetch_array($q_data_user_login);
                     break;
                     case 'pemerintahan':
                     include 'pemerintahan.php';
-                    break; 
+                    break;
                     case 'informasi':
                     include 'informasi.php';
                     break;
@@ -143,3 +162,6 @@ $data_user_login=mysqli_fetch_array($q_data_user_login);
             AOS.init();
         </script>
 
+</body>
+
+</html>

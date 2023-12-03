@@ -1,19 +1,15 @@
 
 <?php
-    // Menentukan button di bagian mana yang di klik untuk melakukan aksi
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Mengklik tombol kirim keluhan 
         if (isset($_POST['kirim_keluhan'])){
             $_SESSION['judul'] = $_POST["judul"];
-            $_SESSION['keluhan'] = $_POST["keluhan"]; // Menyimpan sesi keluhan & judul untuk dikirim ke lapor.php
+            $_SESSION['keluhan'] = $_POST["keluhan"];
             header("Location: ?page=lapor");
             exit();
-        } 
-        // Mengklik tombol login
-        elseif(isset($_POST["masuk"])){
+        } elseif(isset($_POST["masuk"])){
             $email = $_POST["email"];
             $password = md5($_POST["password"]);
-            $result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'"); //Memanggil data user dari db untuk sesi aktif
+            $result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
             $row = mysqli_fetch_assoc($result);
             if(mysqli_num_rows($result) > 0){
                 if($password == $row['password']){
@@ -25,18 +21,17 @@
                     }else{
                         $_SESSION['id_user']=$row['id_user'];
                         $_SESSION['login']='login';
-                        header ('Location: index.php');
+                        header('Location: index.php');
                     } 
                 }
                 else{
                 }
             }
-            }
-        } 
+        }
+    } 
 ?>
 
 <head>
-    
     <style>
         .hide-scroll-bar {
             -ms-overflow-style: none;
@@ -151,7 +146,7 @@
         </div>
     </section>
     <section class=" pb-20 w-[100%] md:w-[85%] lg:w-[80%] mx-auto">
-        <div class="container grid mx-auto text-center  w-[80%]">
+        <div class="container grid mx-auto text-center w-[80%]">
             <h1 class="text-2xl text-black dark:text-white font-bold mx-auto ">LOKASI</h1>
         </div>
         <div class="container grid mx-auto px-4 py-16 w-[90%] md:w-[85%] lg:w-[80%] md:grid-cols-8 lg:grid-cols-12 gap-8">
@@ -174,8 +169,7 @@
         <div class=" container bg-gray-700 rounded-lg grid mx-auto w-[90%] md:w-[85%] lg:w-[80%] px-4 py-16 md:grid-cols-8 lg:grid-cols-12 gap-3">
             <!-- <div class="hidden lg:inline-block"></div> -->
             <div class="md:col-span-3 lg:col-span-4 min-h-72 text-center object-center text-white place-self-center">
-                <h2>DESA TERPADU
-                </h2>
+                <h2>DESA TERPADU</h2>
                 <h1 class="text-3xl font-bold">DESA WIJIMULYO</h1>
             </div>
             <div class=" md:col-span-2 lg:col-span-4 min-h-72 text-center text-white place-self-center">
@@ -218,7 +212,6 @@
                         </div>
                     </form>
                 <?php } ?>
-
             </div>
         </div>
     </section>
@@ -291,6 +284,7 @@
             </div>
         </div>
     </section>
+    <!-- Keuangan -->
     <section class="  pb-20 w-[100%] md:w-[85%] lg:w-[80%] mx-auto">
         <div class="container gap-5 grid w-[85%] mx-auto lg:grid-cols-5">
             <div class="flex text-center lg:col-span-2 bg-blue-500 w-[100%] h-[100%] rounded-lg">
