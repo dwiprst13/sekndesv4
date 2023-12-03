@@ -5,7 +5,7 @@ Whats used in here?
 1. Framework Tailwind
 2. mysql database 
 
-This website use SPA schema (Single Page Application) 
+This website adopted SPA schema (Single Page Application) but still isn't.
 
 ### Fitur yang ada di website ini:
 1. Beranda

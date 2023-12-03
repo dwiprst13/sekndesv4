@@ -1,4 +1,5 @@
 # sekndesv4
+## Jangan ubah code php nya atau aku nangis
 ## Step 1
 1. Instal XAMPP download di xampp.com
 2. Download Code.zip dari repositori ini
