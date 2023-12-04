@@ -105,10 +105,9 @@ function tampilkanNavbar($userInfo, $data_user_login) {
                     </li>
                 </ul>
             </div>
-            <div class="flex items-center gap-6" >
-                <!-- Memastikan ada aktivitas login atau tidak -->
+            <div class="flex items-center gap-3" >
                 <?php tampilkanNavbar($userInfo, $data_user_login); ?>
-                    <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-xl  text-white cursor-pointer lg:hidden"></ion-icon>
+                <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-xl  text-white cursor-pointer lg:hidden"></ion-icon>
             </div>
 
             <!-- MODAL KONFIRMASI LOGOUT -->

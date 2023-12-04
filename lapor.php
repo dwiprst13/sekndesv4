@@ -14,10 +14,10 @@ if (isset($_POST["submit"])) {
     $judul = $_POST["judul"];
     $keluhan = $_POST["keluhan"];
     $wilayah = $_POST["wilayah"];
-    $target_dir = "uploads/"; 
+    $target_dir = "uploads/laporan/"; 
     $target_file = $target_dir . basename($_FILES["foto"]["name"]);
     move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
-    $sql = "INSERT INTO aduan (judul_keluhan, keluhan, wilayah, foto, id_user, tanggal_masukkan) VALUES ('$judul', '$keluhan', '$wilayah', '$target_file', $userInfo, CURRENT_TIMESTAMP)";
+    $sql = "INSERT INTO aduan (judul_keluhan, keluhan, wilayah, foto, id_user, tanggal_masukkan, status) VALUES ('$judul', '$keluhan', '$wilayah', '$target_file', $userInfo, CURRENT_TIMESTAMP, 'Dalam Antrian')";
 
     if ($conn->query($sql) === TRUE) {
         unset($_SESSION['judul']); //Membersihkan sesi judul

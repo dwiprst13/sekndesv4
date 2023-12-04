@@ -20,49 +20,59 @@ if (isset($_POST["submit"])) {
 } 
 ?>
 <body class="flex">
+    <body class=" w-[80%] h-screen">
     <header class="bg-gray-900 w-[100%] sticky left-0 top-0">
         <nav class="h-16 w-[100%] flex mx-auto " >
             <div class="place-self-center flex gap-1 p-5">
-                <h1 class="text-white font-bold"><a href="?page=user">Artikel</a> / </h1>
-                <h2 class="text-white"> Tambah Artikel</h2>
+                <h1 class="text-white font-bold"><a href="?page=user">Galeri</a> / </h1>
+                <h2 class="text-white"> Tambah Galeri</h2>
             </div>
         </nav>
     </header>
-    <body class=" w-[80%] h-screen">
-        <div class="flex text-sm md:text-base h-24 w-[90%] mx-auto text-lg ">
-            <div class="place-self-center">
-                <p>Tambah Artikel</p>
-            </div>
+    <div class="text-gray-900 bg-gray-200">
+        <div class="p-4 flex">
+            <h1 class="text-xl">
+                Tambah Galeri
+            </h1>
         </div>
-        <form class="w-[90%] grid grid-cols-12 flex flex-col mx-auto pb-32" action="" method="POST" enctype="multipart/form-data" autocomplete="off">
-            <div class="col-span-12">
-                    <div class="mx-auto w-[100%]">
-                        <label for="judul" class="block text-sm   font-medium leading-6 ">Judul</label>
-                        <div class="mt-2">
-                            <input id="judul" name="judul" type="text" autocomplete="off" placeholder="Judul" required class="block w-[100%]  rounded-md border-0 py-1.5 text-gray-900 white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+        <div class=" px-3 py-4 justify-between">
+            <button class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">
+                <a href="?page=galeri">Kembali</a>
+            </button>
+        </div>
+        <div class="sm:mx-auto sm:w-full">
+            <form class="w-[90%] grid grid-cols-12 flex flex-col mx-auto pb-32" action="" method="POST" enctype="multipart/form-data" autocomplete="off">
+                <div class="col-span-12">
+                        <div class="mx-auto w-[100%]">
+                            <label for="judul" class="block text-sm   font-medium leading-6 ">Judul</label>
+                            <div class="mt-2">
+                                <input id="judul" name="judul" type="text" autocomplete="off" placeholder="Judul" required class="block w-[100%]  rounded-md border-0 py-1.5 text-gray-900 white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
                         </div>
-                    </div>
-                    <div class="mx-auto w-[100%]  ">
-                        <label for="deskripsi" class="block text-sm font-medium leading-6 ">Deskripsi</label>
-                        <div class="mt-2">
-                            <textarea id="deskripsi" name="deskripsi" rows="4" cols="50" type="text" placeholder="Isi Artikel" autocomplete="off" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900 white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                        <div class="mx-auto w-[100%]  ">
+                            <label for="deskripsi" class="block text-sm font-medium leading-6 ">Deskripsi</label>
+                            <div class="mt-2">
+                                <textarea id="deskripsi" name="deskripsi" rows="4" cols="50" type="text" placeholder="Isi Artikel" autocomplete="off" required class="block w-[100%] rounded-md border-0 py-1.5 text-gray-900 white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mx-auto w-[100%]">
-                        <label for="foto" class="block text-sm font-medium leading-6 ">Gambar</label>
-                        <div class="mt-2">
-                            <input id="foto" name="foto" type="file" autocomplete="" multiple onchange="readURL(this)" required accept="image/*" class=" block w-[100%] p-5 file:mr-4 file:py-1 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-violet-100 file:cursor-pointer rounded-md border-0 py-1.5 white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <div class="mx-auto w-[100%]">
+                            <label for="foto" class="block text-sm font-medium leading-6 ">Gambar</label>
+                            <div class="mt-2">
+                                <input id="foto" name="foto" type="file" autocomplete="" multiple onchange="readURL(this)" required accept="image/*" class=" block w-[100%] p-5 file:mr-4 file:py-1 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-violet-100 file:cursor-pointer rounded-md border-0 py-1.5 white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex mx-auto w-[100%] place-items-center   mx-auto">
-                        <img src="" id="img" class="align-items-center">
-                    </div>
-                    <div class="mx-auto w-[100%] ">
-                        <button type="submit" name="submit" class="flex w-[100%] justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white  shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Kirim</button>
-                    </div>
-            </div>
-            
-        </form>
+                        <div class="flex mx-auto w-[100%] place-items-center   mx-auto">
+                            <img src="" id="img" class="align-items-center">
+                        </div>
+                        <div class="mx-auto w-[100%] ">
+                            <button type="submit" name="submit" class="flex w-[100%] justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white  shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Kirim</button>
+                        </div>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+        
         <script>
             function readURL(input) {
             var img = document.querySelector("#img");

@@ -53,9 +53,9 @@ if (isset($_GET['page']) && $_GET['page'] == 'edit_galeri') {
             <?php
                 while ($row_galeri = mysqli_fetch_assoc($querygaleri)) {
                 ?>
-                <a href="?page=detail_galeri&id_doc=<?= $row_galeri['id_doc'] ?>" class="card-galeri justify-center p-2 bg-gray-700 text-white md:col-span-3 lg:col-span-3 rounded-lg">
+                <a href="?page=detail_galeri&id_doc=<?= $row_galeri['id_doc'] ?>" class="card-galeri justify-center p-2 text-gray-900 md:col-span-3 lg:col-span-3 rounded-lg bg-white">
                     <h1 class="text-center pt-3 text-lg"><b><?= $row_galeri['judul'] ?></b></h1>
-                    <img src="<?= $row_galeri['documentasi'] ?>" alt="" class="h-60 pt-3 w-[100%]">
+                    <img src="<?= $row_galeri['documentasi'] ?>" alt="" class="h-40 pt-3 w-[100%]">
                     <p class="text-justify text-sm pt-3 line-clamp-3"><?= $row_galeri['deskripsi'] ?></p>
                 </a>
                 <?php

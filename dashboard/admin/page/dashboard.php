@@ -33,39 +33,53 @@ $totalGaleri = countTableRows($conn, "galeri");
             </div>
         </nav>
     </header>
-    <div class=" grid grid-cols-12 gap-5 w-[90%] flex mx-auto">
-        <div class="bg-gray-500 col-span-3 rounded-lg">
+    <!-- Main Info Summary -->
+    <div class=" grid grid-cols-12 gap-5 py-8 w-[90%] flex mx-auto">
+        <div class="bg-blue-500 col-span-3 rounded-lg">
             <a href="?page=artikel">
                 <div class="w-[100%] p-4 text-white">
                     <p class="text-2xl text-center p-1">Jumlah Artikel</p>
-                    <span class="text-5xl font-bold p-1"><p class="text-center"><?php echo $totalArticle;?></p></span>
+                    <span class="text-5xl font-bold "><p class="text-center p-1"><?php echo $totalArticle;?></p></span>
                 </div>
             </a>
         </div>
-        <div class="bg-gray-500 col-span-3 rounded-lg">
+        <div class="bg-green-500 col-span-3 rounded-lg">
             <a href="?page=user">
                 <div class="w-[100%] p-4 text-white">
                     <p class="text-2xl text-center p-1">Jumlah User</p>
-                    <span class="text-5xl font-bold p-1"><p class="text-center"><?php echo $totalUsers;?></p></span>
+                    <span class="text-5xl font-bold "><p class="text-center p-1"><?php echo $totalUsers;?></p></span>
                 </div>
             </a>
         </div>
-        <div class="bg-gray-500 col-span-3 rounded-lg">
+        <div class="bg-red-500 col-span-3 rounded-lg">
             <a href="?page=lapor">
                 <div class="w-[100%] p-4 text-white">
                     <p class="text-2xl text-center p-1">Jumlah Aduan</p>
-                    <span class="text-5xl font-bold p-1"><p class="text-center"><?php echo $totalAduan;?></p></span>
+                    <span class="text-5xl font-bold "><p class="text-center p-1"><?php echo $totalAduan;?></p></span>
                 </div>
             </a>
         </div>
-        <div class="bg-gray-500 col-span-3 rounded-lg">
+        <div class="bg-orange-500 col-span-3 rounded-lg">
             <a href="?page=galeri">
                 <div class="w-[100%] p-4 text-white">
                     <p class="text-2xl text-center p-1">Jumlah Galeri</p>
-                    <span class="text-5xl font-bold p-1"><p class="text-center"><?php echo $totalGaleri;?></p></span>
+                    <span class="text-5xl font-bold "><p class="text-center p-1"><?php echo $totalGaleri;?></p></span>
                 </div>
             </a>
         </div>
     </div>
+    <!-- Riwayat Kunjungan -->
+    <div>
+
+    </div>
+    <!-- Summary user -->
+    <div>
+
+    </div>
+    <!-- Summary Aduan -->
+    <div>
+
+    </div>
+    
 </body>
 </html>

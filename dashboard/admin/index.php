@@ -28,49 +28,57 @@ if($_SESSION['login_admin']=='login'){
     <link rel="icon" type="image/x-icon" href="asset/pemerintah/gambar3.jpeg">
 </head>
 <body>
-<div class="fixed left-0 top-0 w-64 h-full bg-gray-900 p-4 z-50 sidebar-menu transition-transform">
+<div class="fixed flex flex-col left-0 top-0 w-64 h-full bg-gray-900 p-4 z-50 sidebar-menu transition-transform">
         <a href="#" class="flex items-center pb-4 border-b border-b-gray-800">
             <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover">
-            <span class="text-lg font-bold text-white ml-3">Logo</span>
+            <span class="text-lg font-bold text-white ml-3">Sekndes Admin</span>
         </a>
         <ul class="mt-4">
             <li class="mb-1 group active">
                 <a href="?page=dashboard" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md">
                     <i class="ri-home-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">Dashboard</span>
+                    <span class="text-base">Dashboard</span>
                 </a>
             </li>
             <li class="mb-1 group ">
                 <a href="?page=user" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md">
                     <i class="ri-home-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">User</span>
+                    <span class="text-base">User</span>
                 </a>
             </li>
             <li class="mb-1 group ">
                 <a href="?page=artikel" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md">
                     <i class="ri-home-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">Artikel</span>
+                    <span class="text-base">Artikel</span>
                 </a>
             </li>
             <li class="mb-1 group ">
                 <a href="?page=galeri" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md">
                     <i class="ri-home-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">Galeri</span>
+                    <span class="text-base">Galeri</span>
                 </a>
             </li>
             <li class="mb-1 group ">
                 <a href="?page=lapor" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md">
                     <i class="ri-home-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">Laporan</span>
+                    <span class="text-base">Laporan</span>
                 </a>
             </li>
             <li class="mb-1 group">
                 <a href="?page=informasi" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md">
                     <i class="ri-settings-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">Informasi</span>
+                    <span class="text-base">Informasi</span>
                 </a>
             </li>
         </ul>
+        <span id="jam" class="text-white text-2xl mt-28 text-center bottom-0 bg-blue-500 rounded-lg"> </span>
+        <div class="text-white p-4 gap-2">
+            <p class="py-1 text-sm">LogIn Admin as</p>
+            <p class="text-base text-center py-1"><?= $data_user_login['name'] ?></p>
+            <div class="py-1">
+                <button id="logoutBtn" class="bg-red-500 text-sm rounded-lg text-center w-full p-2">Log Out</button>
+            </div>
+        </div>
     </div>
     <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-50 min-h-screen transition-all main">
         <div class=" bg-gray-200 items-center shadow-md shadow-black/5 sticky top-0 left-0 z-30">
@@ -165,6 +173,17 @@ if($_SESSION['login_admin']=='login'){
         window.location.href = '../../logout.php'; // Redirect ke halaman logout jika dikonfirmasi
     }
     }
+    function tampilkanJam() {
+        var now = new Date();
+        var jam = now.getHours();
+        var menit = now.getMinutes();
+        var detik = now.getSeconds();
+        detik = detik.toString().padStart(2, '0');
+
+        var waktu = jam + ":" + menit + ":" + detik;
+        document.getElementById('jam').innerHTML = waktu;
+    }
+    setInterval(tampilkanJam, 5);
 </script>
 </body>
 <?php } ?>

@@ -36,8 +36,6 @@ if (isset($_GET['page']) && $_GET['page'] == 'edit_artikel') {
         <div class="mb-3">
             <div class="flex mb-4 flex w-full flex-wrap ">
                 <input type="search" class="mx-auto m-0 -mr-0.5 block min-w-0 flex-auto rounded-l border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6]  outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-blackfocus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-gray-600 dark:focus:border-primary" placeholder="Search" aria-label="Search" aria-describedby="button-addon1" />
-
-                <!--Search button-->
                 <button
                 class=" flex items-center rounded-r bg-blue-500 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg" type="button" id="button-addon1" data-te-ripple-init data-te-ripple-color="light">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
@@ -58,7 +56,7 @@ if (isset($_GET['page']) && $_GET['page'] == 'edit_artikel') {
             ?>
                 <a href="?page=detail_artikel&id_artikel=<?= $row_artikel['id_artikel'] ?>" class="card-galeri justify-center p-2 text-gray-900 md:col-span-3 lg:col-span-3 rounded-lg <?= $card_class ?>">
                     <h1 class="text-center pt-3 text-lg"><b><?= $row_artikel['judul'] ?></b></h1>
-                    <img src="<?= $path_baru ?>" alt="" class="h-60 pt-3 w-[100%]">
+                    <img src="<?= $path_baru ?>" alt="" class="h-35 pt-3 w-[100%]">
                     <p class="text-justify text-sm pt-3 line-clamp-3"><?= $row_artikel['content'] ?></p>
                 </a>
             <?php
